@@ -1,19 +1,20 @@
 //
-//  ViewController.swift
+//  SignUpViewController.swift
 //  IvyLifts
 //
-//  Created by Mike Chu on 12/21/18.
+//  Created by Mike Chu on 12/22/18.
 //  Copyright © 2018 Mike Lin. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
+    
     
     // TODO: Replace this with some sort of logo or something
-    let loginLabel: UILabel = {
+    let signUpLabel: UILabel = {
         let label = UILabel()
-        label.text = "Login"
+        label.text = "Sign Up"
         label.font = UIFont.boldSystemFont(ofSize: 28)
         label.textAlignment = .center
         return label
@@ -47,12 +48,12 @@ class LoginViewController: UIViewController {
     
     let needAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Need an account? ", attributes: [
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
             NSAttributedString.Key.foregroundColor: UIColor.lightGray
             ]
         )
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [
+        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14),
             NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)
             ])
@@ -66,10 +67,10 @@ class LoginViewController: UIViewController {
         
     }
     
-    let loginButton: UIButton = {
+    let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.isEnabled = false
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Create Account", for: .normal)
         button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -81,7 +82,7 @@ class LoginViewController: UIViewController {
     @objc func handleLogin() {
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -89,7 +90,7 @@ class LoginViewController: UIViewController {
     }
     
     func setupUI() {
-        let stackview = UIStackView(arrangedSubviews: [loginLabel, emailTextField, passwordTextField, loginButton])
+        let stackview = UIStackView(arrangedSubviews: [signUpLabel, emailTextField, passwordTextField, signUpButton])
         stackview.axis = .vertical
         stackview.spacing = 10
         stackview.distribution = .fillEqually
@@ -114,4 +115,3 @@ class LoginViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
 }
-
