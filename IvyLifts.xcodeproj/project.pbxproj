@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		8417945B948FF72715021A21 /* Pods_IvyLifts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E77959D05245DA233C5EEE2 /* Pods_IvyLifts.framework */; };
 		A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30821CE237E00B3EA5D /* AppDelegate.swift */; };
-		A826D30B21CE237E00B3EA5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30A21CE237E00B3EA5D /* ViewController.swift */; };
+		A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30A21CE237E00B3EA5D /* LoginViewController.swift */; };
 		A826D30E21CE237E00B3EA5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A826D30C21CE237E00B3EA5D /* Main.storyboard */; };
 		A826D31021CE237F00B3EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A826D30F21CE237F00B3EA5D /* Assets.xcassets */; };
 		A826D31321CE237F00B3EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A826D31121CE237F00B3EA5D /* LaunchScreen.storyboard */; };
+		A826D31B21CE285300B3EA5D /* UIKit+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D31A21CE285300B3EA5D /* UIKit+Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,11 +21,12 @@
 		4E77959D05245DA233C5EEE2 /* Pods_IvyLifts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IvyLifts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A826D30521CE237E00B3EA5D /* IvyLifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IvyLifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A826D30821CE237E00B3EA5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A826D30A21CE237E00B3EA5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A826D30A21CE237E00B3EA5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A826D30D21CE237E00B3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A826D30F21CE237F00B3EA5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A826D31221CE237F00B3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A826D31421CE237F00B3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A826D31A21CE285300B3EA5D /* UIKit+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Util.swift"; sourceTree = "<group>"; };
 		F89E0F46FDAABE597F7037B3 /* Pods-IvyLifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				A826D30821CE237E00B3EA5D /* AppDelegate.swift */,
-				A826D30A21CE237E00B3EA5D /* ViewController.swift */,
+				A826D30A21CE237E00B3EA5D /* LoginViewController.swift */,
+				A826D31A21CE285300B3EA5D /* UIKit+Util.swift */,
 				A826D30C21CE237E00B3EA5D /* Main.storyboard */,
 				A826D30F21CE237F00B3EA5D /* Assets.xcassets */,
 				A826D31121CE237F00B3EA5D /* LaunchScreen.storyboard */,
@@ -212,7 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A826D30B21CE237E00B3EA5D /* ViewController.swift in Sources */,
+				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
+				A826D31B21CE285300B3EA5D /* UIKit+Util.swift in Sources */,
 				A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
