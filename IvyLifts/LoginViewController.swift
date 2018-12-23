@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import JWT
 
 class LoginViewController: UIViewController {
     
@@ -42,7 +44,15 @@ class LoginViewController: UIViewController {
     
     
     @objc func handleTextInputChange() {
-        
+//        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+//
+//        if isFormValid {
+//            loginButton.isEnabled = true
+//            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+//        } else {
+//            loginButton.isEnabled = false
+//            loginButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+//        }
     }
     
     let needAccountButton: UIButton = {
@@ -68,7 +78,7 @@ class LoginViewController: UIViewController {
     
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.isEnabled = false
+//        button.isEnabled = false
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         button.layer.cornerRadius = 5
@@ -82,10 +92,22 @@ class LoginViewController: UIViewController {
         
     }
 
+    let email = "tester3@test.com"
+    let password = "password"
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        
+        let auth = IvyAPIAuthorizer()
+        
+        auth.login(email: email, password: password) { (token) in
+            if let token = token {
+                print("TOKEN IS NOW:", token)
+                let manager = TokenManager(token: token)
+            }
+        }
+        
     }
     
     func setupUI() {
