@@ -19,11 +19,11 @@ protocol IvyAPIAuthProtocol {
     
     /// Sends a POST request to Sign up, inputting a username and password.
     /// - Returns: True if sign up was successful, false otherwise
-    func signUp(email: String, password: String) -> Bool
+    func signUp(email: String, password: String, completionHandler: @escaping (Bool) -> Void)
     
     /// Sends a DELETE request to delete the current account.
     /// - Returns: True if account is deleted, false otherwise
-    func deleteAccount(userID: String) -> Bool
+    func deleteAccount(userID: String, completionHandler: @escaping (Bool) -> Void)
 }
 
 class IvyAPIAuthorizer: IvyAPIAuthProtocol {
@@ -49,13 +49,14 @@ class IvyAPIAuthorizer: IvyAPIAuthProtocol {
             
             if let json = response.result.value as? [String: Any], let token = json["token"] as? String {
                 completionHandler(token)
+            } else {
+                completionHandler(nil)
             }
         }
-        completionHandler(nil)
     }
     
     /// POST request to /user/signup
-    internal func signUp(email: String, password: String) -> Bool {
+    internal func signUp(email: String, password: String, completionHandler: @escaping (Bool) -> Void) {
         let parameters: Parameters = [
             "email": email,
             "password": password
@@ -66,11 +67,10 @@ class IvyAPIAuthorizer: IvyAPIAuthProtocol {
             debugPrint(response)
             #endif
         }
-        return true
     }
     
     /// DELETE request to /user/:id
-    internal func deleteAccount(userID: String) -> Bool {
+    internal func deleteAccount(userID: String, completionHandler: @escaping (Bool) -> Void) {
 //        let parameters: Parameters = ["]
         let endPoint = self.hostName + "/user/delete/" + userID
         Alamofire.request(endPoint, method: .delete).responseJSON { (response) in
@@ -78,6 +78,5 @@ class IvyAPIAuthorizer: IvyAPIAuthProtocol {
             debugPrint(response)
             #endif
         }
-        return true
     }
 }

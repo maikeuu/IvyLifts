@@ -71,6 +71,7 @@ struct TokenManager {
         }
     }
     
+    /// Util function that uses the JWT library to decode a token String and return it's payload
     private func decryptToken(_ token: String) -> ClaimSet? {
         do {
             let claims: ClaimSet = try JWT.decode(token, algorithm: .hs256("secret".data(using: .utf8)!))
