@@ -25,6 +25,8 @@
 		A826D33221D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33121D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift */; };
 		A826D33521D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */; };
 		A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */; };
+		A826D33B21D18D3B00B3EA5D /* WorkoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */; };
+		A826D33D21D19E2B00B3EA5D /* ExerciseEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		A826D33121D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyOverviewCollectionController.swift; sourceTree = "<group>"; };
 		A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverviewCollectionCell.swift; sourceTree = "<group>"; };
 		A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionController.swift; sourceTree = "<group>"; };
+		A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionCell.swift; sourceTree = "<group>"; };
+		A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryController.swift; sourceTree = "<group>"; };
 		F89E0F46FDAABE597F7037B3 /* Pods-IvyLifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +155,7 @@
 				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
 				A826D33621D1827400B3EA5D /* Overview */,
 				A826D33921D185E500B3EA5D /* Workout */,
+				A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */,
+				A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -304,11 +310,13 @@
 				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
 				A826D33021D0633400B3EA5D /* Models.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
+				A826D33D21D19E2B00B3EA5D /* ExerciseEntryController.swift in Sources */,
 				A826D33221D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift in Sources */,
 				A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */,
 				A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */,
 				A826D31D21CE2E1800B3EA5D /* SignUpViewController.swift in Sources */,
 				A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */,
+				A826D33B21D18D3B00B3EA5D /* WorkoutCollectionCell.swift in Sources */,
 				A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */,
 				A826D32821D0460A00B3EA5D /* Constraints.swift in Sources */,
 				A826D32421CF8A6D00B3EA5D /* TokenManager.swift in Sources */,

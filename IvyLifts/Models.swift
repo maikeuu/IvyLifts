@@ -23,10 +23,10 @@ struct ExerciseGoal {
     let exerciseName: String
     let numSets: UInt
     let numReps: UInt
-    let targetWeight: UInt
+    let targetWeight: Double
     let isAMRAP: Bool
     
-    init(exerciseName: String, numSets: UInt, numReps: UInt, targetWeight: UInt, isAMRAP: Bool = false) {
+    init(exerciseName: String, numSets: UInt, numReps: UInt, targetWeight: Double, isAMRAP: Bool = false) {
         self.exerciseName = exerciseName
         self.numSets = numSets
         self.numReps = numReps

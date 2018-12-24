@@ -47,7 +47,14 @@ class WorkoutCollectionController: UICollectionViewController {
         default:
             cell.backgroundColor = .white
         }
+        cell.model = exercises[indexPath.row]
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Transitioning to ExerciseEntryController")
+        let exerciseEntryController = ExerciseEntryController()
+        self.navigationController?.pushViewController(exerciseEntryController, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,46 +70,5 @@ extension WorkoutCollectionController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.height/CGFloat(exercises.count + 1)
         return CGSize(width: view.frame.width, height: height)
-    }
-}
-
-class WorkoutCollectionCell: UICollectionViewCell {
-    
-    var model: ExerciseGoal? {
-        didSet {
-            guard let model = model else { return }
-        }
-    }
-    
-    let exerciseLabel: UILabel = {
-        let lb = UILabel()
-        lb.text = "Squat"
-        lb.backgroundColor = .cyan
-        lb.textAlignment = .center
-        return lb
-    }()
-    
-    let weightTextField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .blue
-        tf.text = "225 lbs"
-        tf.textAlignment = .center
-        return tf
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        let sv = UIStackView(arrangedSubviews: [exerciseLabel, weightTextField])
-        sv.axis = .vertical
-        sv.spacing = 4
-        sv.distribution = .fillEqually
-        
-        addSubview(sv)
-        sv.pinTopAnchor(to: topAnchor, constant: 4)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -45,7 +45,7 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         lb.addSubview(lineSeperator)
         lineSeperator.pinHorizontalSides(left: lb.leftAnchor, right: lb.rightAnchor)
         lineSeperator.pinTopAnchor(to: lb.bottomAnchor)
-        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.setHeight(padding: 0.5)
         
         
         return lb
@@ -118,7 +118,7 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         addSubview(bigStack)
         titleLabel.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
         titleLabel.pinTopAnchor(to: topAnchor)
-        titleLabel.setHeight(constant: 35)
+        titleLabel.setHeight(padding: 35)
         bigStack.pinVerticalSides(top: titleLabel.bottomAnchor, bottom: bottomAnchor)
         bigStack.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
     }

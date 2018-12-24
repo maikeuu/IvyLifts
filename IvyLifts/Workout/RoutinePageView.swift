@@ -48,8 +48,8 @@ class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
         self.pageControl.pageIndicatorTintColor = .black
         self.pageControl.currentPageIndicatorTintColor = .gray
         self.pageControl.pinHorizontalSides(left: view.leftAnchor, leftPadding: 16, right: view.rightAnchor, rightPadding: 16)
-        self.pageControl.setHeight(constant: 50)
-        self.pageControl.pinBottomToMargins(container: view, constant: 0)
+        self.pageControl.setHeight(padding: 50)
+        self.pageControl.pinBottomToMargins(container: view, padding: 0)
         self.pageControl.backgroundColor = .red
     }
     
