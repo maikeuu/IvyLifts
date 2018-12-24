@@ -13,12 +13,16 @@
 		A826D30E21CE237E00B3EA5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A826D30C21CE237E00B3EA5D /* Main.storyboard */; };
 		A826D31021CE237F00B3EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A826D30F21CE237F00B3EA5D /* Assets.xcassets */; };
 		A826D31321CE237F00B3EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A826D31121CE237F00B3EA5D /* LaunchScreen.storyboard */; };
-		A826D31B21CE285300B3EA5D /* UIKit+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D31A21CE285300B3EA5D /* UIKit+Util.swift */; };
+		A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D31A21CE285300B3EA5D /* UIColor.swift */; };
 		A826D31D21CE2E1800B3EA5D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D31C21CE2E1800B3EA5D /* SignUpViewController.swift */; };
 		A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */; };
 		A826D32121CF71BD00B3EA5D /* IvyAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32021CF71BD00B3EA5D /* IvyAPIManager.swift */; };
 		A826D32421CF8A6D00B3EA5D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32321CF8A6D00B3EA5D /* TokenManager.swift */; };
 		A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32521CF8AA900B3EA5D /* IvyAuth.swift */; };
+		A826D32821D0460A00B3EA5D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32721D0460A00B3EA5D /* Constraints.swift */; };
+		A826D32C21D04B2A00B3EA5D /* RoutinePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */; };
+		A826D32E21D05A6700B3EA5D /* WeeklyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32D21D05A6700B3EA5D /* WeeklyRoutineViewController.swift */; };
+		A826D33021D0633400B3EA5D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32F21D0633400B3EA5D /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +35,16 @@
 		A826D30F21CE237F00B3EA5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A826D31221CE237F00B3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A826D31421CE237F00B3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A826D31A21CE285300B3EA5D /* UIKit+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Util.swift"; sourceTree = "<group>"; };
+		A826D31A21CE285300B3EA5D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A826D31C21CE2E1800B3EA5D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A826D32021CF71BD00B3EA5D /* IvyAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyAPIManager.swift; sourceTree = "<group>"; };
 		A826D32321CF8A6D00B3EA5D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		A826D32521CF8AA900B3EA5D /* IvyAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyAuth.swift; sourceTree = "<group>"; };
+		A826D32721D0460A00B3EA5D /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePageView.swift; sourceTree = "<group>"; };
+		A826D32D21D05A6700B3EA5D /* WeeklyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRoutineViewController.swift; sourceTree = "<group>"; };
+		A826D32F21D0633400B3EA5D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F89E0F46FDAABE597F7037B3 /* Pods-IvyLifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,15 +99,17 @@
 			isa = PBXGroup;
 			children = (
 				A826D32221CF8A3800B3EA5D /* IvyAPI */,
-				A826D30821CE237E00B3EA5D /* AppDelegate.swift */,
-				A826D30A21CE237E00B3EA5D /* LoginViewController.swift */,
+				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */,
-				A826D31C21CE2E1800B3EA5D /* SignUpViewController.swift */,
-				A826D31A21CE285300B3EA5D /* UIKit+Util.swift */,
-				A826D30C21CE237E00B3EA5D /* Main.storyboard */,
+				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
+				A826D32F21D0633400B3EA5D /* Models.swift */,
+				A826D32D21D05A6700B3EA5D /* WeeklyRoutineViewController.swift */,
+				A826D30821CE237E00B3EA5D /* AppDelegate.swift */,
+				A826D32921D0462F00B3EA5D /* UIKit+Extensions */,
 				A826D30F21CE237F00B3EA5D /* Assets.xcassets */,
 				A826D31121CE237F00B3EA5D /* LaunchScreen.storyboard */,
 				A826D31421CE237F00B3EA5D /* Info.plist */,
+				A826D30C21CE237E00B3EA5D /* Main.storyboard */,
 			);
 			path = IvyLifts;
 			sourceTree = "<group>";
@@ -112,6 +122,24 @@
 				A826D32021CF71BD00B3EA5D /* IvyAPIManager.swift */,
 			);
 			path = IvyAPI;
+			sourceTree = "<group>";
+		};
+		A826D32921D0462F00B3EA5D /* UIKit+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A826D32721D0460A00B3EA5D /* Constraints.swift */,
+				A826D31A21CE285300B3EA5D /* UIColor.swift */,
+			);
+			path = "UIKit+Extensions";
+			sourceTree = "<group>";
+		};
+		A826D32A21D04AD100B3EA5D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A826D30A21CE237E00B3EA5D /* LoginViewController.swift */,
+				A826D31C21CE2E1800B3EA5D /* SignUpViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,12 +269,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A826D32121CF71BD00B3EA5D /* IvyAPIManager.swift in Sources */,
+				A826D32C21D04B2A00B3EA5D /* RoutinePageView.swift in Sources */,
 				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
+				A826D33021D0633400B3EA5D /* Models.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
-				A826D31B21CE285300B3EA5D /* UIKit+Util.swift in Sources */,
+				A826D32E21D05A6700B3EA5D /* WeeklyRoutineViewController.swift in Sources */,
+				A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */,
 				A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */,
 				A826D31D21CE2E1800B3EA5D /* SignUpViewController.swift in Sources */,
 				A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */,
+				A826D32821D0460A00B3EA5D /* Constraints.swift in Sources */,
 				A826D32421CF8A6D00B3EA5D /* TokenManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
