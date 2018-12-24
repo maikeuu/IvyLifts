@@ -106,7 +106,6 @@
 				A826D32221CF8A3800B3EA5D /* IvyAPI */,
 				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */,
-				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
 				A826D33321D1810600B3EA5D /* Workout */,
 				A826D32F21D0633400B3EA5D /* Models.swift */,
 				A826D32921D0462F00B3EA5D /* UIKit+Extensions */,
@@ -149,8 +148,9 @@
 		A826D33321D1810600B3EA5D /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
 				A826D33621D1827400B3EA5D /* Overview */,
-				A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */,
+				A826D33921D185E500B3EA5D /* Workout */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -162,6 +162,14 @@
 				A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */,
 			);
 			path = Overview;
+			sourceTree = "<group>";
+		};
+		A826D33921D185E500B3EA5D /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */,
+			);
+			path = Workout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

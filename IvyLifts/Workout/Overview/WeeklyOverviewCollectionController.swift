@@ -26,6 +26,11 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// REMOVE THIS TO STOP DEBUGGING
+        delegate?.present()
+        
+        
         setupCollectionView()
         self.workouts = workoutOfTheWeek.workouts
         let pageControlHeight: CGFloat = 50

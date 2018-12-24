@@ -14,11 +14,12 @@ protocol WeeklyOverviewCollectionDelegate: class {
 
 /// This class servers as the "Home" screen, where it shows a page view that alternates between Workout Week A/B.
 class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
+    
+    // TODO: - Decide if this is the best place to put the delegate
     func present() {
         let flow = UICollectionViewFlowLayout()
         self.navigationController?.pushViewController(WorkoutCollectionController(collectionViewLayout: flow), animated: true)
     }
-    
     
     var orderedViewControllers = [UIViewController]()
     
