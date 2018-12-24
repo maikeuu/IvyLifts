@@ -8,19 +8,33 @@
 
 import UIKit
 
+protocol WeeklyOverviewCollectionDelegate: class {
+    func present()
+}
+
 /// This class servers as the "Home" screen, where it shows a page view that alternates between Workout Week A/B.
-class RoutinePageView: UIPageViewController {
+class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
+    func present() {
+        let flow = UICollectionViewFlowLayout()
+        self.navigationController?.pushViewController(WorkoutCollectionController(collectionViewLayout: flow), animated: true)
+    }
+    
     
     var orderedViewControllers = [UIViewController]()
     
     // Create the pages and append them to orderedViewControllers
     func setupPages() {
-        let vcOne = WeeklyRoutineViewController()
+        let flow = UICollectionViewFlowLayout()
+        let vcOne = WeeklyOverviewCollectionController(collectionViewLayout: flow)
+        vcOne.delegate = self
+        let navOne = UINavigationController(rootViewController: vcOne)
         
-        let vcTwo = WeeklyRoutineViewController()
+        let vcTwo = WeeklyOverviewCollectionController(collectionViewLayout: flow)
         vcTwo.view.backgroundColor = .blue
+        vcTwo.delegate = self
+        let navTwo = UINavigationController(rootViewController: vcTwo)
         
-        self.orderedViewControllers.append(contentsOf: [vcOne, vcTwo])
+        self.orderedViewControllers.append(contentsOf: [navOne, navTwo])
     }
     
     /// Set the properties of pageControl and

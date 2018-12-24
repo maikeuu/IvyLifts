@@ -1,74 +1,14 @@
 //
-//  WeeklyRoutineViewController.swift
+//  WeeklyOverviewCollectionCell.swift
 //  IvyLifts
 //
-//  Created by Mike Chu on 12/23/18.
+//  Created by Mike Chu on 12/24/18.
 //  Copyright © 2018 Mike Lin. All rights reserved.
 //
 
 import UIKit
 
-class WeeklyRoutineViewController: UIViewController {
-    
-    let tableview = UITableView()
-    
-    let workoutOfTheWeek = WeeklyRoutineGenerator.createWeek()
-    var workouts: [Workout] = [] {
-        didSet {
-            tableview.reloadData()
-        }
-    }
-    
-    func setupTableView() {
-        self.tableview.register(WeeklyRoutineTableCell.self, forCellReuseIdentifier: "cellID")
-        self.tableview.dataSource = self
-        self.tableview.delegate = self
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .yellow
-        self.workouts = workoutOfTheWeek.workouts
-        setupTableView()
-        
-        view.addSubview(tableview)
-        tableview.pinHorizontalSides(left: view.leftAnchor, right: view.rightAnchor)
-        // Set bottomPadding == to pageControlHeight
-        tableview.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: 50)
-    }
-}
-
-extension WeeklyRoutineViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workouts.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! WeeklyRoutineTableCell
-        cell.model = workouts[indexPath.row]
-//        if indexPath.row == 0 {
-//            cell.backgroundColor = .red
-//        } else if indexPath.row == 1 {
-//            cell.backgroundColor = .orange
-//        } else {
-//            cell.backgroundColor = .yellow
-//        }
-        return cell
-    }
-}
-
-extension WeeklyRoutineViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.tableview.frame.height / CGFloat((workouts.count+1))
-    }
-    
-    /// Get rid of hanging animation
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-// FUK refactor this to CollectionView
-class WeeklyRoutineTableCell: UITableViewCell {
+class WeeklyOverviewCollectionCell: UICollectionViewCell {
     var model: Workout? {
         didSet {
             // TODO: - Refactor this LOL
@@ -94,6 +34,22 @@ class WeeklyRoutineTableCell: UITableViewCell {
             exerciseFourGoalLabel.text = goalFour
         }
     }
+    
+    let titleLabel: UILabel = {
+        let lb = UILabel()
+        lb.text = "Day A"
+        lb.textAlignment = .center
+        
+        let lineSeperator = UIView()
+        lineSeperator.backgroundColor = .black
+        lb.addSubview(lineSeperator)
+        lineSeperator.pinHorizontalSides(left: lb.leftAnchor, right: lb.rightAnchor)
+        lineSeperator.pinTopAnchor(to: lb.bottomAnchor)
+        lineSeperator.setHeight(constant: 0.5)
+        
+        
+        return lb
+    }()
     
     // Name Labels
     let exerciseOneNameLabel: UILabel = {
@@ -135,8 +91,10 @@ class WeeklyRoutineTableCell: UITableViewCell {
         return lb
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
         
         let stackOne = UIStackView(arrangedSubviews: [exerciseOneNameLabel, exerciseOneGoalLabel])
         stackOne.axis = .horizontal
@@ -151,24 +109,24 @@ class WeeklyRoutineTableCell: UITableViewCell {
         stackFour.axis = .horizontal
         stackFour.distribution = .fillEqually
         
+        // big stack is a Vertical Stackview containing the workouts
         let bigStack = UIStackView(arrangedSubviews: [stackOne, stackTwo, stackThree, stackFour])
         bigStack.axis = .vertical
         bigStack.distribution = .fillEqually
         
+        addSubview(titleLabel)
         addSubview(bigStack)
-        bigStack.pinVerticalSides(top: topAnchor, bottom: bottomAnchor)
+        titleLabel.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
+        titleLabel.pinTopAnchor(to: topAnchor)
+        titleLabel.setHeight(constant: 35)
+        bigStack.pinVerticalSides(top: titleLabel.bottomAnchor, bottom: bottomAnchor)
         bigStack.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-/// Represents a single exercise done, the date recorded, number of sets done and number of reps per set
-struct Entry {
-    let exerciseString: String
-    var weightsRecorded: [Int]
+    
     
 }
+

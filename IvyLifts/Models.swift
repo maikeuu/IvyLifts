@@ -35,6 +35,12 @@ struct ExerciseGoal {
     }
 }
 
+/// Represents a single exercise done, the date recorded, number of sets done and number of reps per set
+struct Entry {
+    let exerciseString: String
+    var weightsRecorded: [Int]
+    
+}
 
 
 // MARK- : Data Generators
