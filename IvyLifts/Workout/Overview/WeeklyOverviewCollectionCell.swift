@@ -114,8 +114,8 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         bigStack.axis = .vertical
         bigStack.distribution = .fillEqually
         
-        addSubview(titleLabel)
-        addSubview(bigStack)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(bigStack)
         titleLabel.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
         titleLabel.pinTopAnchor(to: topAnchor)
         titleLabel.setHeight(padding: 35)

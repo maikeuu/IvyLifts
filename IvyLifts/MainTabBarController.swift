@@ -12,6 +12,7 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        log.info("MainTabBarController loaded!")
         view.backgroundColor = .white
         
         let vcOne = RoutinePageView()

@@ -21,12 +21,12 @@ struct WeeklyRoutine {
 /// Represents an exercise, how many sets and reps you want to do, at what target weight.
 struct ExerciseGoal {
     let exerciseName: String
-    let numSets: UInt
-    let numReps: UInt
+    let numSets: Int
+    let numReps: Int
     let targetWeight: Double
     let isAMRAP: Bool
     
-    init(exerciseName: String, numSets: UInt, numReps: UInt, targetWeight: Double, isAMRAP: Bool = false) {
+    init(exerciseName: String, numSets: Int, numReps: Int, targetWeight: Double, isAMRAP: Bool = false) {
         self.exerciseName = exerciseName
         self.numSets = numSets
         self.numReps = numReps
@@ -36,10 +36,26 @@ struct ExerciseGoal {
 }
 
 /// Represents a single exercise done, the date recorded, number of sets done and number of reps per set
-struct Entry {
-    let exerciseString: String
-    var weightsRecorded: [Int]
+struct SetEntry {
+    let exerciseName: String
+    var weightRecorded: Double
+    var repsRecorded: Int
     
+    init(exerciseName: String, weightRecorded: Double, repsRecorded: Int = 0) {
+        self.exerciseName = exerciseName
+        self.weightRecorded = weightRecorded
+        self.repsRecorded = repsRecorded
+    }
+    
+    mutating func updateWeightRecorded(weight: Double) {
+        self.weightRecorded = weight
+    }
+    
+    mutating func updateRepsRecorded(reps: Int) {
+        self.repsRecorded = reps
+        log.debug("Method being called!")
+        log.debug(self)
+    }
 }
 
 

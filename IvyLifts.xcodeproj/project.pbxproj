@@ -26,8 +26,10 @@
 		A826D33521D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */; };
 		A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */; };
 		A826D33B21D18D3B00B3EA5D /* WorkoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */; };
-		A826D33D21D19E2B00B3EA5D /* ExerciseEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */; };
 		A826D34221D1B60F00B3EA5D /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */; };
+		A826D34521D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D34421D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift */; };
+		A868DA0821D1CC2700176E63 /* ExerciseDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868DA0721D1CC2700176E63 /* ExerciseDetailHeader.swift */; };
+		A868DA0A21D1CC4900176E63 /* ExerciseEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +55,10 @@
 		A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverviewCollectionCell.swift; sourceTree = "<group>"; };
 		A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionController.swift; sourceTree = "<group>"; };
 		A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionCell.swift; sourceTree = "<group>"; };
-		A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryController.swift; sourceTree = "<group>"; };
 		A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		A826D34421D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseEntryCollectionController.swift; sourceTree = "<group>"; };
+		A868DA0721D1CC2700176E63 /* ExerciseDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailHeader.swift; sourceTree = "<group>"; };
+		A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryCell.swift; sourceTree = "<group>"; };
 		F89E0F46FDAABE597F7037B3 /* Pods-IvyLifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +163,6 @@
 				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
 				A826D33621D1827400B3EA5D /* Overview */,
 				A826D33921D185E500B3EA5D /* Workout */,
-				A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -178,8 +181,19 @@
 			children = (
 				A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */,
 				A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */,
+				A868DA0621D1CC0A00176E63 /* ExerciseEntry */,
 			);
 			path = Workout;
+			sourceTree = "<group>";
+		};
+		A868DA0621D1CC0A00176E63 /* ExerciseEntry */ = {
+			isa = PBXGroup;
+			children = (
+				A826D34421D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift */,
+				A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */,
+				A868DA0721D1CC2700176E63 /* ExerciseDetailHeader.swift */,
+			);
+			path = ExerciseEntry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,15 +344,17 @@
 			files = (
 				A826D32121CF71BD00B3EA5D /* IvyAPIManager.swift in Sources */,
 				A826D32C21D04B2A00B3EA5D /* RoutinePageView.swift in Sources */,
+				A868DA0821D1CC2700176E63 /* ExerciseDetailHeader.swift in Sources */,
 				A826D33521D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift in Sources */,
+				A826D34521D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift in Sources */,
 				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
 				A826D33021D0633400B3EA5D /* Models.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
-				A826D33D21D19E2B00B3EA5D /* ExerciseEntryController.swift in Sources */,
 				A826D33221D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift in Sources */,
 				A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */,
 				A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */,
 				A826D31D21CE2E1800B3EA5D /* SignUpViewController.swift in Sources */,
+				A868DA0A21D1CC4900176E63 /* ExerciseEntryCell.swift in Sources */,
 				A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */,
 				A826D33B21D18D3B00B3EA5D /* WorkoutCollectionCell.swift in Sources */,
 				A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */,

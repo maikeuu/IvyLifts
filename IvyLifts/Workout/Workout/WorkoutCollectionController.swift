@@ -52,8 +52,11 @@ class WorkoutCollectionController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Transitioning to ExerciseEntryController")
-        let exerciseEntryController = ExerciseEntryController()
+        log.info("Transitioning to ExerciseEntryController")
+        let flow = UICollectionViewFlowLayout()
+        flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        let exerciseEntryController = ExerciseEntryCollectionController(collectionViewLayout: flow)
+        exerciseEntryController.exercise = exercises[indexPath.row]
         self.navigationController?.pushViewController(exerciseEntryController, animated: true)
     }
     

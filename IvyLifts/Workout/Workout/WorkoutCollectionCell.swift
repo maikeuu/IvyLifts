@@ -64,7 +64,7 @@ class WorkoutCollectionCell: UICollectionViewCell {
         mainStackView.spacing = 4
         mainStackView.distribution = .fillEqually
         
-        addSubview(mainStackView)
+        contentView.addSubview(mainStackView)
         mainStackView.pinTopAnchor(to: topAnchor, padding: 4)
         mainStackView.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
     }
