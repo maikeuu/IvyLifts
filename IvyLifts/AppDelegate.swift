@@ -5,8 +5,10 @@
 //  Created by Mike Chu on 12/21/18.
 //  Copyright © 2018 Mike Lin. All rights reserved.
 //
-
+import SwiftyBeaver
 import UIKit
+
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
+        
+        let console = ConsoleDestination()
+        log.addDestination(console)
+        
         return true
     }
 

@@ -27,6 +27,7 @@
 		A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */; };
 		A826D33B21D18D3B00B3EA5D /* WorkoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */; };
 		A826D33D21D19E2B00B3EA5D /* ExerciseEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */; };
+		A826D34221D1B60F00B3EA5D /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionController.swift; sourceTree = "<group>"; };
 		A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionCell.swift; sourceTree = "<group>"; };
 		A826D33C21D19E2B00B3EA5D /* ExerciseEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryController.swift; sourceTree = "<group>"; };
+		A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		F89E0F46FDAABE597F7037B3 /* Pods-IvyLifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8417945B948FF72715021A21 /* Pods_IvyLifts.framework in Frameworks */,
+				A826D34221D1B60F00B3EA5D /* SwiftyBeaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +83,7 @@
 		8E5B5ED1259557EC8AEE5B59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */,
 				4E77959D05245DA233C5EEE2 /* Pods_IvyLifts.framework */,
 			);
 			name = Frameworks;
@@ -190,6 +194,7 @@
 				A826D30221CE237E00B3EA5D /* Frameworks */,
 				A826D30321CE237E00B3EA5D /* Resources */,
 				AE56006E84B966B317E9ED24 /* [CP] Embed Pods Frameworks */,
+				A826D34321D1B61C00B3EA5D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -268,6 +273,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A826D34321D1B61C00B3EA5D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		AE56006E84B966B317E9ED24 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -469,6 +493,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8W5LLV26X4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = IvyLifts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -491,6 +519,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8W5LLV26X4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = IvyLifts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

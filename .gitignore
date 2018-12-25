@@ -20,10 +20,15 @@ profile
 *.moved-aside
 DerivedData
 *.hmap
-# *.ipa
+*.ipa
+*.dSYM.zip
+*.dSYM
 
 # CocoaPods
 Pods
+
+# Carthage
+Carthage/Build
 
 # Jazzy
 docs
