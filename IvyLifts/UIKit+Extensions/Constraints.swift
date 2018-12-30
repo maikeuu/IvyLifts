@@ -42,23 +42,23 @@ extension UIView {
     public func setSize(width: CGFloat, height: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
         if width != 0 {
-            self.setWidth(padding: width)
+            self.setWidth(constant: width)
         }
         if height != 0 {
-            self.setHeight(padding: height)
+            self.setHeight(constant: height)
         }
     }
     
     /// Set width of a UIView
-    public func setWidth(padding: CGFloat) {
+    public func setWidth(constant: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: padding).isActive = true
+        self.widthAnchor.constraint(equalToConstant: constant).isActive = true
     }
     
     /// Set height of a UIView
-    public func setHeight(padding: CGFloat) {
+    public func setHeight(constant: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: padding).isActive = true
+        self.heightAnchor.constraint(equalToConstant: constant).isActive = true
     }
 }
 

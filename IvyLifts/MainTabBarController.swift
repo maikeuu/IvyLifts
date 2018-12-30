@@ -15,12 +15,14 @@ class MainTabBarController: UITabBarController {
         log.info("MainTabBarController loaded!")
         view.backgroundColor = .white
         
-        let vcOne = RoutinePageView()
-        vcOne.view.backgroundColor = .red
+        let flow = UICollectionViewFlowLayout()
+        let vcOne = WeeklyOverviewCollectionController(collectionViewLayout: flow)
+        let navOne = UINavigationController(rootViewController: vcOne)
+//        vcOne.view.backgroundColor = .red
         vcOne.title = "Home"
         vcOne.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")
         vcOne.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
-        let navOne = UINavigationController(rootViewController: vcOne)
+//        let navOne = UINavigationController(rootViewController: vcOne)
 
         
         let vcTwo = UIViewController()

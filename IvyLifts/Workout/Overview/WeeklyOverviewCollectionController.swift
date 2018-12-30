@@ -7,16 +7,56 @@
 //
 
 import UIKit
-
+/// This class is the controller that shows the Week A / Week B Workouts to do.
 class WeeklyOverviewCollectionController: UICollectionViewController {
     
-    weak var delegate: WeeklyOverviewCollectionDelegate?
+    var isOddWeek = true {
+        didSet {
+            if isOddWeek {
+                self.workouts = WeeklyRoutineGenerator.createOddWeek().workouts
+            } else {
+                self.workouts = WeeklyRoutineGenerator.createEvenWeek().workouts
+            }
+        }
+    }
     
-    let workoutOfTheWeek = WeeklyRoutineGenerator.createWeek()
-    var workouts: [Workout] = [] {
+    var workouts: [Workout] = WeeklyRoutineGenerator.createOddWeek().workouts {
         didSet {
             self.collectionView.reloadData()
         }
+    }
+    
+    let switchWeekButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Switch week", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .white
+        button.addTarget(self, action: #selector(handleSwitchWeek), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleSwitchWeek() {
+        if isOddWeek {
+            self.isOddWeek = false
+        } else {
+            self.isOddWeek = true
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .lightGray
+        setupCollectionView()
+        view.addSubview(switchWeekButton)
+        
+        self.collectionView.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, topPadding: 16, bottom: switchWeekButton.topAnchor, bottomPadding: 8)
+        self.collectionView.pinHorizontalSides(left: view.leftAnchor, right: view.rightAnchor)
+        switchWeekButton.pinVerticalSides(top: collectionView.bottomAnchor, topPadding: 8, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: 8)
+        switchWeekButton.placeCenterHorizontallyInContainer(self.view)
+        switchWeekButton.setWidth(constant: 160)
     }
     
     func setupCollectionView() {
@@ -24,20 +64,7 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
         self.collectionView.backgroundColor = UIColor.lightGray
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        /// REMOVE THIS TO STOP DEBUGGING
-        delegate?.present()
-        
-        
-        setupCollectionView()
-        self.workouts = workoutOfTheWeek.workouts
-        let pageControlHeight: CGFloat = 50
-        self.collectionView.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: pageControlHeight)
-        self.collectionView.pinHorizontalSides(left: view.leftAnchor, right: view.rightAnchor)
-    }
-    
+    /// On click, push to the WorkoutCollectionViewController
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         
@@ -47,7 +74,13 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
         }, completion: { _ in
           cell?.backgroundColor = UIColor.white
         })
-        delegate?.present()
+        
+        let flow = UICollectionViewFlowLayout()
+        let workoutController = WorkoutCollectionController(collectionViewLayout: flow)
+        workoutController.exercises = workouts[indexPath.item].exercises
+        
+        self.navigationController?.pushViewController(workoutController, animated: true)
+        
     }
     
     
@@ -58,6 +91,20 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! WeeklyOverviewCollectionCell
         cell.model = workouts[indexPath.row]
+        
+        // Temporary workaround to labeling the days
+        if isOddWeek {
+            switch indexPath.item {
+            case 0, 2: cell.titleLabel.text = "Day A"
+            default: cell.titleLabel.text = "Day B"
+            }
+        } else {
+            switch indexPath.item {
+            case 0, 2: cell.titleLabel.text = "Day B"
+            default: cell.titleLabel.text = "Day A"
+            }
+        }
+        
         return cell
     }
 }

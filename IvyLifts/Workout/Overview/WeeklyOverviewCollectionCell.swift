@@ -37,7 +37,6 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let lb = UILabel()
-        lb.text = "Day A"
         lb.textAlignment = .center
         
         let lineSeperator = UIView()
@@ -45,7 +44,7 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         lb.addSubview(lineSeperator)
         lineSeperator.pinHorizontalSides(left: lb.leftAnchor, right: lb.rightAnchor)
         lineSeperator.pinTopAnchor(to: lb.bottomAnchor)
-        lineSeperator.setHeight(padding: 0.5)
+        lineSeperator.setHeight(constant: 0.5)
         
         
         return lb
@@ -118,7 +117,7 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         contentView.addSubview(bigStack)
         titleLabel.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
         titleLabel.pinTopAnchor(to: topAnchor)
-        titleLabel.setHeight(padding: 35)
+        titleLabel.setHeight(constant: 35)
         bigStack.pinVerticalSides(top: titleLabel.bottomAnchor, bottom: bottomAnchor)
         bigStack.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
     }

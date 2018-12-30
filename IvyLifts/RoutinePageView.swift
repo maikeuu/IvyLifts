@@ -8,18 +8,8 @@
 
 import UIKit
 
-protocol WeeklyOverviewCollectionDelegate: class {
-    func present()
-}
-
-/// This class servers as the "Home" screen, where it shows a page view that alternates between Workout Week A/B.
-class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
-    
-    // TODO: - Decide if this is the best place to put the delegate
-    func present() {
-        let flow = UICollectionViewFlowLayout()
-        self.navigationController?.pushViewController(WorkoutCollectionController(collectionViewLayout: flow), animated: true)
-    }
+/// This class serves as the "Home" screen, where it shows a page view that alternates between Workout Week A/B.
+class RoutinePageView: UIPageViewController {
     
     var orderedViewControllers = [UIViewController]()
     
@@ -27,12 +17,10 @@ class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
     func setupPages() {
         let flow = UICollectionViewFlowLayout()
         let vcOne = WeeklyOverviewCollectionController(collectionViewLayout: flow)
-        vcOne.delegate = self
         let navOne = UINavigationController(rootViewController: vcOne)
         
         let vcTwo = WeeklyOverviewCollectionController(collectionViewLayout: flow)
         vcTwo.view.backgroundColor = .blue
-        vcTwo.delegate = self
         let navTwo = UINavigationController(rootViewController: vcTwo)
         
         self.orderedViewControllers.append(contentsOf: [navOne, navTwo])
@@ -48,7 +36,7 @@ class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
         self.pageControl.pageIndicatorTintColor = .black
         self.pageControl.currentPageIndicatorTintColor = .gray
         self.pageControl.pinHorizontalSides(left: view.leftAnchor, leftPadding: 16, right: view.rightAnchor, rightPadding: 16)
-        self.pageControl.setHeight(padding: 50)
+        self.pageControl.setHeight(constant: 50)
         self.pageControl.pinBottomToMargins(container: view, padding: 0)
         self.pageControl.backgroundColor = .red
     }
@@ -65,7 +53,6 @@ class RoutinePageView: UIPageViewController, WeeklyOverviewCollectionDelegate {
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
-        
     }
     
     /// Makes the transition between the pages scroll instead of curl

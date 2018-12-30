@@ -104,7 +104,7 @@ class LoginViewController: UIViewController {
         auth.login(email: email, password: password) { (token) in
             if let token = token {
                 print("TOKEN IS NOW:", token)
-                let manager = TokenManager(token: token)
+//                let manager = TokenManager(token: token)
             }
         }
         

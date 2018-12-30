@@ -8,14 +8,8 @@
 
 import UIKit
 
-protocol ExerciseEntryDelegate: class {
-//    func updateEntry(new entry: SetEntry, at index: Int)
-    func updateNumberOfReps(reps: Int, at index: Int)
-}
 
 class ExerciseEntryCell: UICollectionViewCell {
-    
-    weak var delegate: ExerciseEntryDelegate?
     
     var setNumber: Int? {
         didSet {
@@ -24,56 +18,28 @@ class ExerciseEntryCell: UICollectionViewCell {
         }
     }
     
-    var numRepsGoal: Int? {
-        didSet {
-            guard let numReps = numRepsGoal else { return }
-            numRepsTextfield.text = "\(numReps)"
-        }
-    }
-    
-    var targetWeight: Double? {
-        didSet {
-            guard let weight = targetWeight else { return }
-            weightPerformedTextField.text = "\(weight)"
-        }
-    }
-    
     var setEntry: SetEntry! {
         didSet {
+            self.numRepsTextfield.text = "\(setEntry.repsRecorded)"
+            self.weightPerformedTextField.text = "\(setEntry.weightRecorded)"
             log.debug("Set entry set!")
         }
     }
     
-    let setNumberLabel: UILabel = {
-        let lb = UILabel()
-        lb.backgroundColor = .red
-        return lb
-    }()
+    let setNumberLabel = UILabel()
     
     let numRepsTextfield: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .orange
         tf.keyboardType = .asciiCapableNumberPad
         tf.textAlignment = .right
+        tf.isEnabled = false
         return tf
     }()
-    
-    @objc func handleChangeNumberOfReps() {
-        if let repsString = numRepsTextfield.text, let reps = Int(repsString), let setNumber = setNumber {
-            let index = setNumber - 1
-            if index >= 0 {
-//                setEntry.updateRepsRecorded(reps: reps)
-//                delegate?.updateEntry(new: setEntry, at: index)
-                delegate?.updateNumberOfReps(reps: reps, at: index)
-            }
-        }
-    }
     
     lazy var numRepsContainer: UIStackView = {
         
         let label = UILabel()
         label.text = " reps"
-        label.backgroundColor = .orange
         
         let stackView = UIStackView(arrangedSubviews: [numRepsTextfield, label])
         stackView.axis = .horizontal
@@ -85,8 +51,8 @@ class ExerciseEntryCell: UICollectionViewCell {
     
     let weightPerformedTextField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .yellow
         tf.textAlignment = .right
+        tf.isEnabled = false
         return tf
     }()
     
@@ -94,7 +60,6 @@ class ExerciseEntryCell: UICollectionViewCell {
         
         let label = UILabel()
         label.text = " lbs"
-        label.backgroundColor = .yellow
         
         let stackView = UIStackView(arrangedSubviews: [weightPerformedTextField, label])
         stackView.axis = .horizontal
@@ -107,17 +72,33 @@ class ExerciseEntryCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .white
         
-        let stackview = UIStackView(arrangedSubviews: [setNumberLabel, numRepsContainer, weightPerformedContainer])
-        stackview.distribution = .fillEqually
-        stackview.axis = .horizontal
-        stackview.spacing = 10
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = 3
         
-        addSubview(stackview)
+//        let stackview = UIStackView(arrangedSubviews: [setNumberLabel, weightPerformedContainer, numRepsContainer])
+//        stackview.distribution = .fillEqually
+//        stackview.axis = .horizontal
+//        stackview.spacing = 10
+//        addSubview(stackview)
+        
+        addSubview(setNumberLabel)
+        addSubview(weightPerformedContainer)
+        addSubview(numRepsContainer)
+        
+        setNumberLabel.placeCenterVerticallyInContainer(self)
+        setNumberLabel.pinLeftAnchor(to: leftAnchor, padding: 16)
+        
+        weightPerformedContainer.placeCenterVerticallyInContainer(self)
+        weightPerformedContainer.placeCenterHorizontallyInContainer(self)
+        
+        numRepsContainer.placeCenterVerticallyInContainer(self)
+        numRepsContainer.pinRightAnchor(to: rightAnchor, padding: 16)
+        
         numRepsTextfield.delegate = self
-        numRepsTextfield.addTarget(self, action: #selector(handleChangeNumberOfReps), for: .editingChanged)
         weightPerformedTextField.delegate = self
-        stackview.pinHorizontalSides(left: leftAnchor, leftPadding: 8, right: rightAnchor, rightPadding: 8)
-        stackview.pinVerticalSides(top: topAnchor, topPadding: 0, bottom: bottomAnchor, bottomPadding: 0)
+//        stackview.pinHorizontalSides(left: leftAnchor, leftPadding: 16, right: rightAnchor, rightPadding: 16)
+//        stackview.pinVerticalSides(top: topAnchor, topPadding: 0, bottom: bottomAnchor, bottomPadding: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

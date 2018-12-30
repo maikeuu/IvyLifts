@@ -27,9 +27,10 @@
 		A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */; };
 		A826D33B21D18D3B00B3EA5D /* WorkoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */; };
 		A826D34221D1B60F00B3EA5D /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */; };
-		A826D34521D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D34421D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift */; };
+		A826D34521D1BB1600B3EA5D /* ExerciseEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D34421D1BB1600B3EA5D /* ExerciseEntryController.swift */; };
 		A868DA0821D1CC2700176E63 /* ExerciseDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868DA0721D1CC2700176E63 /* ExerciseDetailHeader.swift */; };
 		A868DA0A21D1CC4900176E63 /* ExerciseEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */; };
+		A8E1B6CC21D897970025D7DA /* DataGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1B6CB21D897970025D7DA /* DataGenerators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,9 +57,10 @@
 		A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionController.swift; sourceTree = "<group>"; };
 		A826D33A21D18D3B00B3EA5D /* WorkoutCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionCell.swift; sourceTree = "<group>"; };
 		A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
-		A826D34421D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseEntryCollectionController.swift; sourceTree = "<group>"; };
+		A826D34421D1BB1600B3EA5D /* ExerciseEntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseEntryController.swift; sourceTree = "<group>"; };
 		A868DA0721D1CC2700176E63 /* ExerciseDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailHeader.swift; sourceTree = "<group>"; };
 		A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryCell.swift; sourceTree = "<group>"; };
+		A8E1B6CB21D897970025D7DA /* DataGenerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGenerators.swift; sourceTree = "<group>"; };
 		F89E0F46FDAABE597F7037B3 /* Pods-IvyLifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +121,9 @@
 				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */,
 				A826D33321D1810600B3EA5D /* Workout */,
+				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
 				A826D32F21D0633400B3EA5D /* Models.swift */,
+				A8E1B6CB21D897970025D7DA /* DataGenerators.swift */,
 				A826D32921D0462F00B3EA5D /* UIKit+Extensions */,
 				A826D30F21CE237F00B3EA5D /* Assets.xcassets */,
 				A826D31121CE237F00B3EA5D /* LaunchScreen.storyboard */,
@@ -160,7 +164,6 @@
 		A826D33321D1810600B3EA5D /* Workout */ = {
 			isa = PBXGroup;
 			children = (
-				A826D32B21D04B2A00B3EA5D /* RoutinePageView.swift */,
 				A826D33621D1827400B3EA5D /* Overview */,
 				A826D33921D185E500B3EA5D /* Workout */,
 			);
@@ -189,9 +192,9 @@
 		A868DA0621D1CC0A00176E63 /* ExerciseEntry */ = {
 			isa = PBXGroup;
 			children = (
-				A826D34421D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift */,
-				A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */,
+				A826D34421D1BB1600B3EA5D /* ExerciseEntryController.swift */,
 				A868DA0721D1CC2700176E63 /* ExerciseDetailHeader.swift */,
+				A868DA0921D1CC4900176E63 /* ExerciseEntryCell.swift */,
 			);
 			path = ExerciseEntry;
 			sourceTree = "<group>";
@@ -346,8 +349,9 @@
 				A826D32C21D04B2A00B3EA5D /* RoutinePageView.swift in Sources */,
 				A868DA0821D1CC2700176E63 /* ExerciseDetailHeader.swift in Sources */,
 				A826D33521D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift in Sources */,
-				A826D34521D1BB1600B3EA5D /* ExerciseEntryCollectionController.swift in Sources */,
+				A826D34521D1BB1600B3EA5D /* ExerciseEntryController.swift in Sources */,
 				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
+				A8E1B6CC21D897970025D7DA /* DataGenerators.swift in Sources */,
 				A826D33021D0633400B3EA5D /* Models.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
 				A826D33221D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift in Sources */,

@@ -10,22 +10,37 @@ import UIKit
 
 class WorkoutCollectionController: UICollectionViewController {
     
-    func setupCollectionView() {
-        self.collectionView.backgroundColor = UIColor.lightGray
-        self.collectionView.register(WorkoutCollectionCell.self, forCellWithReuseIdentifier: "cellID")
+    var exercises: [ExerciseGoal] = [] {
+        didSet {
+            self.collectionView.reloadData()
+            
+            for _ in exercises {
+                self.entriesCollection.append(contentsOf: [[]])
+            }
+        }
     }
     
-    let exercises = WorkoutGenerator.createAMRAPDay().exercises
+    var entriesCollection: [[SetEntry]] = [] {
+        didSet {
+            log.debug("Setting entries")
+            log.debug(entriesCollection)
+            self.collectionView.reloadData()
+        }
+    }
+    
+    // MARK: - View lifecycle methods 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
     }
     
+    
     /// Make TabBar disappear once this view is pushed
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        log.warning(entriesCollection)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,30 +48,37 @@ class WorkoutCollectionController: UICollectionViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    func setupCollectionView() {
+        self.collectionView.backgroundColor = UIColor.lightGray
+        self.collectionView.register(WorkoutCollectionCell.self, forCellWithReuseIdentifier: "cellID")
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! WorkoutCollectionCell
-        switch indexPath.row {
-        case 0:
-            cell.backgroundColor = .red
-        case 1:
-            cell.backgroundColor = .orange
-        case 2:
-            cell.backgroundColor = .yellow
-        case 3:
-            cell.backgroundColor = .green
-        default:
-            cell.backgroundColor = .white
+        cell.model = exercises[indexPath.item]
+        
+        if indexPath.item < entriesCollection.count {
+            print(indexPath.row)
+            log.debug("Passing \(entriesCollection[indexPath.item]) to \(indexPath.item)")
+            cell.entries = entriesCollection[indexPath.item]
         }
-        cell.model = exercises[indexPath.row]
+        
         return cell
     }
     
+    /// Creates the exerciseEntryController and if we have an collection of entries from it, then we load the
+    /// exerciseEntryController's collectionView with these structs
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         log.info("Transitioning to ExerciseEntryController")
-        let flow = UICollectionViewFlowLayout()
-        flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        let exerciseEntryController = ExerciseEntryCollectionController(collectionViewLayout: flow)
-        exerciseEntryController.exercise = exercises[indexPath.row]
+        let exerciseEntryController = ExerciseEntryController()
+        exerciseEntryController.exercise = exercises[indexPath.item]
+        exerciseEntryController.index = indexPath.item
+        exerciseEntryController.delegate = self
+        
+        if indexPath.item < entriesCollection.count {
+            exerciseEntryController.setEntries = entriesCollection[indexPath.item]
+        }
+        
         self.navigationController?.pushViewController(exerciseEntryController, animated: true)
     }
     
@@ -72,6 +94,18 @@ extension WorkoutCollectionController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.height/CGFloat(exercises.count + 1)
-        return CGSize(width: view.frame.width, height: height)
+        return CGSize(width: view.frame.width - 32, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
+}
+
+extension WorkoutCollectionController: ExerciseEntryDelegate {
+    func passRecordedEntries(entries: [SetEntry], for index: Int) {
+        log.debug("Entries collected from index \(index)")
+        log.debug(entries)
+        self.entriesCollection[index] = entries
     }
 }
