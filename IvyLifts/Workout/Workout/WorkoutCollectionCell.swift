@@ -27,8 +27,6 @@ class WorkoutCollectionCell: UICollectionViewCell {
     var entries: [SetEntry]? {
         didSet {
             guard let entries = entries else { return }
-            log.error("Entry was set!")
-            log.error(entries)
             if entriesCollection.isHidden {
                 entriesCollection.isHidden = false
             }
@@ -67,8 +65,8 @@ class WorkoutCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 1
+//        layer.borderColor = UIColor.black.cgColor
+//        layer.borderWidth = 1
         layer.cornerRadius = 10
         
         let detailsStackView = UIStackView(arrangedSubviews: [exerciseLabel, goalLabel, isAMRAPLabel])

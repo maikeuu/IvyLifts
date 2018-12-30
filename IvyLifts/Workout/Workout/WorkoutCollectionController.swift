@@ -8,18 +8,28 @@
 
 import UIKit
 
+/// This class is a collection view that loads exercises from WeeklyOverViewCollection controller and displays the 4 workouts to do
+/// in a collectionView display. On clicking any of the cells, the navigationController will push ExerciseEntryController
 class WorkoutCollectionController: UICollectionViewController {
     
+    /// The exercises that define each cell.
     var exercises: [ExerciseGoal] = [] {
         didSet {
             self.collectionView.reloadData()
             
+            /// Once we find out how many exercises there are, let entriesCollection populate empty lists in order to
+            /// match the number of cells created and have them map to some empty list corresponding w/ the cell's index.item
             for _ in exercises {
                 self.entriesCollection.append(contentsOf: [[]])
             }
         }
     }
     
+    /// An array of SetEntry arrays, which serves to cache any recorded data passed from ExerciseEntryController through it's delegate.
+    /// Once this array is populated, the collectionView will pass in the list of SetEntrys corresponding to the cell that
+    /// recorded those set entries. That way, there is no need to re-make those list of Entries again, it is automatically populated.
+    /// The cells of WorkoutCollectionController use this collection to populate their own collectionViews, which list the sets that
+    /// have been recorded but on the cell.
     var entriesCollection: [[SetEntry]] = [] {
         didSet {
             log.debug("Setting entries")
@@ -49,7 +59,7 @@ class WorkoutCollectionController: UICollectionViewController {
     }
     
     func setupCollectionView() {
-        self.collectionView.backgroundColor = UIColor.lightGray
+        self.collectionView.backgroundColor = UIColor.background()
         self.collectionView.register(WorkoutCollectionCell.self, forCellWithReuseIdentifier: "cellID")
     }
     
@@ -57,12 +67,9 @@ class WorkoutCollectionController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! WorkoutCollectionCell
         cell.model = exercises[indexPath.item]
         
-        if indexPath.item < entriesCollection.count {
-            print(indexPath.row)
-            log.debug("Passing \(entriesCollection[indexPath.item]) to \(indexPath.item)")
-            cell.entries = entriesCollection[indexPath.item]
-        }
-        
+        /// Pass the entries collected from ExerciseEntryController to the cells in this collectionView, which then
+        /// populate their own collectionView with the entries recorded
+        cell.entries = entriesCollection[indexPath.item]
         return cell
     }
     
@@ -75,9 +82,7 @@ class WorkoutCollectionController: UICollectionViewController {
         exerciseEntryController.index = indexPath.item
         exerciseEntryController.delegate = self
         
-        if indexPath.item < entriesCollection.count {
-            exerciseEntryController.setEntries = entriesCollection[indexPath.item]
-        }
+        exerciseEntryController.setEntries = entriesCollection[indexPath.item]
         
         self.navigationController?.pushViewController(exerciseEntryController, animated: true)
     }

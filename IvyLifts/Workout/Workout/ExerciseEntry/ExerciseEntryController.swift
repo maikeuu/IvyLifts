@@ -39,7 +39,7 @@ class ExerciseEntryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .background()
         setupHeader()
         setupCollectionView()
         
@@ -52,7 +52,7 @@ class ExerciseEntryController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.addSubview(collectionView)
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .background()
         collectionView.delegate = self
         collectionView.register(ExerciseEntryCell.self, forCellWithReuseIdentifier: "cellID")
         collectionView.register(ExerciseDetailHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExerciseDetailCellID")

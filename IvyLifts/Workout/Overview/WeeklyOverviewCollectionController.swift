@@ -7,15 +7,18 @@
 //
 
 import UIKit
-/// This class is the controller that shows the Week A / Week B Workouts to do.
+
+/// This class is the controller that shows the Week A / Week B Workouts.
 class WeeklyOverviewCollectionController: UICollectionViewController {
     
     var isOddWeek = true {
         didSet {
             if isOddWeek {
                 self.workouts = WeeklyRoutineGenerator.createOddWeek().workouts
+                self.navigationItem.title = "Odd Week"
             } else {
                 self.workouts = WeeklyRoutineGenerator.createEvenWeek().workouts
+                self.navigationItem.title = "Even Week"
             }
         }
     }
@@ -48,11 +51,14 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        self.navigationItem.title = "Odd Week"
+        
+        
+        view.backgroundColor = UIColor.background()
         setupCollectionView()
         view.addSubview(switchWeekButton)
         
-        self.collectionView.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, topPadding: 16, bottom: switchWeekButton.topAnchor, bottomPadding: 8)
+        self.collectionView.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, bottom: switchWeekButton.topAnchor, bottomPadding: 8)
         self.collectionView.pinHorizontalSides(left: view.leftAnchor, right: view.rightAnchor)
         switchWeekButton.pinVerticalSides(top: collectionView.bottomAnchor, topPadding: 8, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: 8)
         switchWeekButton.placeCenterHorizontallyInContainer(self.view)
@@ -61,7 +67,7 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     
     func setupCollectionView() {
         self.collectionView.register(WeeklyOverviewCollectionCell.self, forCellWithReuseIdentifier: "cellID")
-        self.collectionView.backgroundColor = UIColor.lightGray
+        self.collectionView.backgroundColor = UIColor.background()
     }
     
     /// On click, push to the WorkoutCollectionViewController
@@ -116,7 +122,11 @@ extension WeeklyOverviewCollectionController: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.height/CGFloat(workouts.count + 1)
-        return CGSize(width: view.frame.width, height: height)
+        return CGSize(width: view.frame.width - 32, height: height - 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
     }
 }
 

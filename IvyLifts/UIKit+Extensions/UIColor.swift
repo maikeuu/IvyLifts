@@ -42,5 +42,9 @@ extension UIColor {
         return UIColor.init(red: 29/255, green: 111/255, blue: 204/255, alpha: 0.45)
     }
     
+    static func background() -> UIColor {
+        return UIColor(white: 0.9, alpha: 1)
+    }
+    
 }
 

@@ -95,6 +95,8 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .white
         
+        layer.cornerRadius = 10
+        
         let stackOne = UIStackView(arrangedSubviews: [exerciseOneNameLabel, exerciseOneGoalLabel])
         stackOne.axis = .horizontal
         stackOne.distribution = .fillEqually
@@ -115,11 +117,11 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(bigStack)
-        titleLabel.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
+        titleLabel.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
         titleLabel.pinTopAnchor(to: topAnchor)
         titleLabel.setHeight(constant: 35)
         bigStack.pinVerticalSides(top: titleLabel.bottomAnchor, bottom: bottomAnchor)
-        bigStack.pinHorizontalSides(left: leftAnchor, right: rightAnchor)
+        bigStack.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
     }
     
     required init?(coder aDecoder: NSCoder) {
