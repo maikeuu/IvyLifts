@@ -1,5 +1,5 @@
 //
-//  WorkoutController.swift
+//  SessionCollectionController.swift
 //  IvyLifts
 //
 //  Created by Mike Chu on 12/24/18.
@@ -10,10 +10,10 @@ import UIKit
 
 /// This class is a collection view that loads exercises from WeeklyOverViewCollection controller and displays the 4 workouts to do
 /// in a collectionView display. On clicking any of the cells, the navigationController will push ExerciseEntryController
-class WorkoutCollectionController: UICollectionViewController {
+class SessionCollectionController: UICollectionViewController {
     
     /// The exercises that define each cell.
-    var exercises: [ExerciseGoal] = [] {
+    var exercises: [FitnessGoal] = [] {
         didSet {
             self.collectionView.reloadData()
             
@@ -30,7 +30,7 @@ class WorkoutCollectionController: UICollectionViewController {
     /// recorded those set entries. That way, there is no need to re-make those list of Entries again, it is automatically populated.
     /// The cells of WorkoutCollectionController use this collection to populate their own collectionViews, which list the sets that
     /// have been recorded but on the cell.
-    var entriesCollection: [[SetEntry]] = [] {
+    var entriesCollection: [[Entry]] = [] {
         didSet {
             log.debug("Setting entries")
             log.debug(entriesCollection)
@@ -60,11 +60,11 @@ class WorkoutCollectionController: UICollectionViewController {
     
     func setupCollectionView() {
         self.collectionView.backgroundColor = UIColor.background()
-        self.collectionView.register(WorkoutCollectionCell.self, forCellWithReuseIdentifier: "cellID")
+        self.collectionView.register(SessionCollectionCell.self, forCellWithReuseIdentifier: "cellID")
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! WorkoutCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! SessionCollectionCell
         cell.model = exercises[indexPath.item]
         
         /// Pass the entries collected from ExerciseEntryController to the cells in this collectionView, which then
@@ -77,7 +77,7 @@ class WorkoutCollectionController: UICollectionViewController {
     /// exerciseEntryController's collectionView with these structs
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         log.info("Transitioning to ExerciseEntryController")
-        let exerciseEntryController = ExerciseEntryController()
+        let exerciseEntryController = EntryController()
         exerciseEntryController.exercise = exercises[indexPath.item]
         exerciseEntryController.index = indexPath.item
         exerciseEntryController.delegate = self
@@ -92,7 +92,7 @@ class WorkoutCollectionController: UICollectionViewController {
     }
 }
 
-extension WorkoutCollectionController: UICollectionViewDelegateFlowLayout {
+extension SessionCollectionController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
     }
@@ -107,8 +107,8 @@ extension WorkoutCollectionController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension WorkoutCollectionController: ExerciseEntryDelegate {
-    func passRecordedEntries(entries: [SetEntry], for index: Int) {
+extension SessionCollectionController: ExerciseEntryDelegate {
+    func passRecordedEntries(entries: [Entry], for index: Int) {
         log.debug("Entries collected from index \(index)")
         log.debug(entries)
         self.entriesCollection[index] = entries

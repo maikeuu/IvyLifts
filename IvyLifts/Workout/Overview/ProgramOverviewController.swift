@@ -1,5 +1,5 @@
 //
-//  WeeklyRoutineViewController.swift
+//  ProgramOverviewController.swift
 //  IvyLifts
 //
 //  Created by Mike Chu on 12/23/18.
@@ -9,21 +9,21 @@
 import UIKit
 
 /// This class is the controller that shows the Week A / Week B Workouts.
-class WeeklyOverviewCollectionController: UICollectionViewController {
+class ProgramOverviewController: UICollectionViewController {
     
     var isOddWeek = true {
         didSet {
             if isOddWeek {
-                self.workouts = WeeklyRoutineGenerator.createOddWeek().workouts
+                self.workouts = WeeklyRoutineGenerator.createOddWeek().sessions
                 self.navigationItem.title = "Odd Week"
             } else {
-                self.workouts = WeeklyRoutineGenerator.createEvenWeek().workouts
+                self.workouts = WeeklyRoutineGenerator.createEvenWeek().sessions
                 self.navigationItem.title = "Even Week"
             }
         }
     }
     
-    var workouts: [Workout] = WeeklyRoutineGenerator.createOddWeek().workouts {
+    var workouts: [Session] = WeeklyRoutineGenerator.createOddWeek().sessions {
         didSet {
             self.collectionView.reloadData()
         }
@@ -66,7 +66,7 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     }
     
     func setupCollectionView() {
-        self.collectionView.register(WeeklyOverviewCollectionCell.self, forCellWithReuseIdentifier: "cellID")
+        self.collectionView.register(ProgramOverviewCell.self, forCellWithReuseIdentifier: "cellID")
         self.collectionView.backgroundColor = UIColor.background()
     }
     
@@ -82,7 +82,7 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
         })
         
         let flow = UICollectionViewFlowLayout()
-        let workoutController = WorkoutCollectionController(collectionViewLayout: flow)
+        let workoutController = SessionCollectionController(collectionViewLayout: flow)
         workoutController.exercises = workouts[indexPath.item].exercises
         
         self.navigationController?.pushViewController(workoutController, animated: true)
@@ -95,7 +95,7 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! WeeklyOverviewCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ProgramOverviewCell
         cell.model = workouts[indexPath.row]
         
         // Temporary workaround to labeling the days
@@ -115,7 +115,7 @@ class WeeklyOverviewCollectionController: UICollectionViewController {
     }
 }
 
-extension WeeklyOverviewCollectionController: UICollectionViewDelegateFlowLayout {
+extension ProgramOverviewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
     }

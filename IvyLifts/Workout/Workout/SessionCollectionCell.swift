@@ -1,5 +1,5 @@
 //
-//  WorkoutCollectionCell.swift
+//  SessionCollectionCell.swift
 //  IvyLifts
 //
 //  Created by Mike Chu on 12/24/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class WorkoutCollectionCell: UICollectionViewCell {
+class SessionCollectionCell: UICollectionViewCell {
     
-    var model: ExerciseGoal? {
+    var model: FitnessGoal? {
         didSet {
             guard let model = model else { return }
-            self.exerciseLabel.text = model.exerciseName
+            self.exerciseLabel.text = model.exercise
             
             let goalString = "\(model.numSets) sets | \(model.numReps) reps | \(model.targetWeight) lbs"
             self.goalLabel.text = goalString
@@ -24,7 +24,7 @@ class WorkoutCollectionCell: UICollectionViewCell {
         }
     }
     
-    var entries: [SetEntry]? {
+    var entries: [Entry]? {
         didSet {
             guard let entries = entries else { return }
             if entriesCollection.isHidden {
@@ -94,7 +94,7 @@ class WorkoutCollectionCell: UICollectionViewCell {
     }
 }
 
-extension WorkoutCollectionCell: UICollectionViewDataSource {
+extension SessionCollectionCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return entries?.count ?? 0
     }
@@ -107,7 +107,7 @@ extension WorkoutCollectionCell: UICollectionViewDataSource {
     }
 }
 
-extension WorkoutCollectionCell: UICollectionViewDelegateFlowLayout {
+extension SessionCollectionCell: UICollectionViewDelegateFlowLayout {
     
     // Spacing between successive cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -122,7 +122,7 @@ extension WorkoutCollectionCell: UICollectionViewDelegateFlowLayout {
 
 class RecordedEntryCell: UICollectionViewCell {
     
-    var model: SetEntry? {
+    var model: Entry? {
         didSet {
             guard let model = model else { return }
             recordedEntryLabel.text = "\(model.repsRecorded) x \(model.weightRecorded) lbs"

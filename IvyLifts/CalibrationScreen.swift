@@ -223,7 +223,7 @@ class CalibrationController: UIViewController {
         let shoulderPress = Double(shoulderPressCalibrationTextField.text!)!
         let pullUps = Double(pullUpsCalibrationTextField.text!)!
         
-        var userMetric = UserMetric()
+        var userMetric = PersonalRecords()
         userMetric.bench = bench
         userMetric.squat = squat
         userMetric.deadlift = deadlift

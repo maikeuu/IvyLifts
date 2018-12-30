@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ExerciseEntryCell: UICollectionViewCell {
+class EntryCell: UICollectionViewCell {
     
     var setNumber: Int? {
         didSet {
@@ -18,7 +18,7 @@ class ExerciseEntryCell: UICollectionViewCell {
         }
     }
     
-    var setEntry: SetEntry! {
+    var setEntry: Entry! {
         didSet {
             self.numRepsTextfield.text = "\(setEntry.repsRecorded)"
             self.weightPerformedTextField.text = "\(setEntry.weightRecorded)"
@@ -106,7 +106,7 @@ class ExerciseEntryCell: UICollectionViewCell {
     }
 }
 
-extension ExerciseEntryCell: UITextFieldDelegate {
+extension EntryCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let decimalCharacterSet = CharacterSet.decimalDigits
         let inputCharacterSet = CharacterSet(charactersIn: string)

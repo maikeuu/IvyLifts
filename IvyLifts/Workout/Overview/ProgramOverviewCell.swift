@@ -1,5 +1,5 @@
 //
-//  WeeklyOverviewCollectionCell.swift
+//  ProgramOverviewCell.swift
 //  IvyLifts
 //
 //  Created by Mike Chu on 12/24/18.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class WeeklyOverviewCollectionCell: UICollectionViewCell {
-    var model: Workout? {
+class ProgramOverviewCell: UICollectionViewCell {
+    var model: Session? {
         didSet {
             // TODO: - Refactor this LOL
             guard let model = model else { return }
@@ -18,10 +18,10 @@ class WeeklyOverviewCollectionCell: UICollectionViewCell {
             let exerciseThree = model.exercises[2]
             let exerciseFour = model.exercises[3]
             
-            exerciseOneNameLabel.text = exerciseOne.exerciseName
-            exerciseTwoNameLabel.text = exerciseTwo.exerciseName
-            exerciseThreeNameLabel.text = exerciseThree.exerciseName
-            exerciseFourNameLabel.text = exerciseFour.exerciseName
+            exerciseOneNameLabel.text = exerciseOne.exercise
+            exerciseTwoNameLabel.text = exerciseTwo.exercise
+            exerciseThreeNameLabel.text = exerciseThree.exercise
+            exerciseFourNameLabel.text = exerciseFour.exercise
             
             let goalOne = "\(exerciseOne.numReps) x \(exerciseOne.numSets) - \(exerciseOne.targetWeight) lbs"
             let goalTwo = "\(exerciseTwo.numReps) x \(exerciseTwo.numSets) - \(exerciseTwo.targetWeight) lbs"

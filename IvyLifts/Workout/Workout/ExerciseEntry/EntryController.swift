@@ -1,5 +1,5 @@
 //
-//  ExerciseEntryController.swift
+//  EntryController.swift
 //  IvyLifts
 //
 //  Created by Mike Chu on 12/24/18.
@@ -9,16 +9,16 @@
 import UIKit
 
 protocol ExerciseEntryDelegate: class {
-    func passRecordedEntries(entries: [SetEntry], for index: Int)
+    func passRecordedEntries(entries: [Entry], for index: Int)
 }
 
-class ExerciseEntryController: UIViewController {
+class EntryController: UIViewController {
     
     weak var delegate: ExerciseEntryDelegate?
     
     var index: Int?
     
-    var setEntries: [SetEntry] = [] {
+    var setEntries: [Entry] = [] {
         didSet {
             if collectionView != nil {
                 self.collectionView.reloadData()
@@ -26,10 +26,10 @@ class ExerciseEntryController: UIViewController {
         }
     }
     
-    var header = ExerciseDetailHeader()
+    var header = EntryHeaderView()
     var collectionView: UICollectionView!
     
-    var exercise: ExerciseGoal? {
+    var exercise: FitnessGoal? {
         didSet {
             guard let exercise = exercise else { return }
             log.debug(exercise)
@@ -54,8 +54,8 @@ class ExerciseEntryController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .background()
         collectionView.delegate = self
-        collectionView.register(ExerciseEntryCell.self, forCellWithReuseIdentifier: "cellID")
-        collectionView.register(ExerciseDetailHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExerciseDetailCellID")
+        collectionView.register(EntryCell.self, forCellWithReuseIdentifier: "cellID")
+        collectionView.register(EntryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExerciseDetailCellID")
         collectionView.pinVerticalSides(top: header.bottomAnchor, topPadding: 16, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: 8)
         collectionView.pinHorizontalSides(left: view.layoutMarginsGuide.leftAnchor, leftPadding: 0, right: view.layoutMarginsGuide.rightAnchor, rightPadding: 0)
         collectionView.delaysContentTouches = false
@@ -95,10 +95,10 @@ class ExerciseEntryController: UIViewController {
     }
 }
 
-extension ExerciseEntryController: UICollectionViewDataSource {
+extension EntryController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ExerciseEntryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! EntryCell
         cell.setNumber = indexPath.row + 1
         cell.setEntry = setEntries[indexPath.row]
         return cell
@@ -110,7 +110,7 @@ extension ExerciseEntryController: UICollectionViewDataSource {
 }
 
 // MARK: - Size and spacing delegate methods
-extension ExerciseEntryController: UICollectionViewDelegateFlowLayout {
+extension EntryController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -128,10 +128,10 @@ extension ExerciseEntryController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ExerciseEntryController: ExerciseDetailDelegate {
+extension EntryController: ExerciseDetailDelegate {
     func didAddEntry(reps: Int, weight: Double) {
-        guard let exerciseName = exercise?.exerciseName else { return }
-        let entry = SetEntry(exerciseName: exerciseName, weightRecorded: weight, repsRecorded: reps)
+        guard let exerciseName = exercise?.exercise else { return }
+        let entry = Entry(exerciseName: exerciseName, weightRecorded: weight, repsRecorded: reps)
         setEntries.append(entry)
     }
 }

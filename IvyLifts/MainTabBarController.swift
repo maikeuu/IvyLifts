@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = .white
         setupRealm()
         
-        let userMetric = realm.objects(UserMetric.self)
+        let userMetric = realm.objects(PersonalRecords.self)
         if userMetric.count == 0 {
             DispatchQueue.main.async {
                 let calibrateViewController = CalibrationController()
@@ -42,7 +42,7 @@ class MainTabBarController: UITabBarController {
     
     func setupControllers() {
         let flowLayout = UICollectionViewFlowLayout()
-        let weeklyOverviewController = WeeklyOverviewCollectionController(collectionViewLayout: flowLayout)
+        let weeklyOverviewController = ProgramOverviewController(collectionViewLayout: flowLayout)
         let navigationScreenOne = UINavigationController(rootViewController: weeklyOverviewController)
         weeklyOverviewController.title = "Home"
         weeklyOverviewController.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")

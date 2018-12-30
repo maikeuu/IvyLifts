@@ -1,5 +1,5 @@
 //
-//  ExerciseDetailHeader.swift
+//  EntryHeaderView.swift
 //  IvyLifts
 //
 //  Created by Mike Chu on 12/24/18.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ExerciseDetailHeader: UIView {
+class EntryHeaderView: UIView {
     
     weak var delegate: ExerciseDetailDelegate?
     
@@ -19,11 +19,11 @@ class ExerciseDetailHeader: UIView {
         return lb
     }()
     
-    var exerciseGoal: ExerciseGoal? {
+    var exerciseGoal: FitnessGoal? {
         didSet {
             guard let exerciseGoal = exerciseGoal else { return }
             
-            let exerciseName = exerciseGoal.exerciseName
+            let exerciseName = exerciseGoal.exercise
             let targetWeight = exerciseGoal.targetWeight
             let numReps = exerciseGoal.numReps
             let isAMRAP = exerciseGoal.isAMRAP
