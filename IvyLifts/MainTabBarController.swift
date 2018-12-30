@@ -7,23 +7,46 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainTabBarController: UITabBarController {
+    
+    var realm: Realm!
+    
+    func setupRealm() {
+        log.info("This is working")
+        var config = Realm.Configuration()
+        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("maikeuu.realm")
+        
+        self.realm = try! Realm(configuration: config)
+        log.debug("Realm being set up at: \(config.fileURL!)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         log.info("MainTabBarController loaded!")
         view.backgroundColor = .white
+        setupRealm()
         
-        let flow = UICollectionViewFlowLayout()
-        let vcOne = WeeklyOverviewCollectionController(collectionViewLayout: flow)
-        let navOne = UINavigationController(rootViewController: vcOne)
-//        vcOne.view.backgroundColor = .red
-        vcOne.title = "Home"
-        vcOne.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")
-        vcOne.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
-//        let navOne = UINavigationController(rootViewController: vcOne)
-
+        let userMetric = realm.objects(UserMetric.self)
+        if userMetric.count == 0 {
+            DispatchQueue.main.async {
+                let calibrateViewController = CalibrationController()
+                calibrateViewController.realm = self.realm
+                self.present(calibrateViewController, animated: true, completion: nil)
+            }
+            return
+        }
+        setupControllers()
+    }
+    
+    func setupControllers() {
+        let flowLayout = UICollectionViewFlowLayout()
+        let weeklyOverviewController = WeeklyOverviewCollectionController(collectionViewLayout: flowLayout)
+        let navigationScreenOne = UINavigationController(rootViewController: weeklyOverviewController)
+        weeklyOverviewController.title = "Home"
+        weeklyOverviewController.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")
+        weeklyOverviewController.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
         
         let vcTwo = UIViewController()
         vcTwo.view.backgroundColor = .orange
@@ -41,7 +64,7 @@ class MainTabBarController: UITabBarController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: nil)
         
-        viewControllers = [navOne, navTwo, navThree]
+        viewControllers = [navigationScreenOne, navTwo, navThree]
         tabBar.tintColor = .black
     }
 }

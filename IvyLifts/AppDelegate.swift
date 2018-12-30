@@ -17,13 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let console = ConsoleDestination()
+        log.addDestination(console)
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
         
-        let console = ConsoleDestination()
-        log.addDestination(console)
         
         return true
     }

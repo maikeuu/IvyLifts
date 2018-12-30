@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8417945B948FF72715021A21 /* Pods_IvyLifts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E77959D05245DA233C5EEE2 /* Pods_IvyLifts.framework */; };
+		A8123FBF21D8D734009D6A68 /* WeeklyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FBE21D8D734009D6A68 /* WeeklyRoutine.swift */; };
+		A8123FC121D8D748009D6A68 /* ExerciseGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC021D8D748009D6A68 /* ExerciseGoal.swift */; };
+		A8123FC321D8D758009D6A68 /* WorkoutGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC221D8D758009D6A68 /* WorkoutGoal.swift */; };
+		A8123FC521D8D783009D6A68 /* UserMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC421D8D783009D6A68 /* UserMetrics.swift */; };
+		A8123FC721D8E02C009D6A68 /* CalibrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */; };
 		A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30821CE237E00B3EA5D /* AppDelegate.swift */; };
 		A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30A21CE237E00B3EA5D /* LoginViewController.swift */; };
 		A826D30E21CE237E00B3EA5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A826D30C21CE237E00B3EA5D /* Main.storyboard */; };
@@ -20,7 +25,7 @@
 		A826D32421CF8A6D00B3EA5D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32321CF8A6D00B3EA5D /* TokenManager.swift */; };
 		A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32521CF8AA900B3EA5D /* IvyAuth.swift */; };
 		A826D32821D0460A00B3EA5D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32721D0460A00B3EA5D /* Constraints.swift */; };
-		A826D33021D0633400B3EA5D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32F21D0633400B3EA5D /* Models.swift */; };
+		A826D33021D0633400B3EA5D /* SetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32F21D0633400B3EA5D /* SetEntry.swift */; };
 		A826D33221D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33121D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift */; };
 		A826D33521D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */; };
 		A826D33821D1828D00B3EA5D /* WorkoutCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */; };
@@ -35,6 +40,11 @@
 /* Begin PBXFileReference section */
 		1C247DC73036A9972CE52E34 /* Pods-IvyLifts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.debug.xcconfig"; sourceTree = "<group>"; };
 		4E77959D05245DA233C5EEE2 /* Pods_IvyLifts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IvyLifts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8123FBE21D8D734009D6A68 /* WeeklyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRoutine.swift; sourceTree = "<group>"; };
+		A8123FC021D8D748009D6A68 /* ExerciseGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGoal.swift; sourceTree = "<group>"; };
+		A8123FC221D8D758009D6A68 /* WorkoutGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutGoal.swift; sourceTree = "<group>"; };
+		A8123FC421D8D783009D6A68 /* UserMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMetrics.swift; sourceTree = "<group>"; };
+		A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationScreen.swift; sourceTree = "<group>"; };
 		A826D30521CE237E00B3EA5D /* IvyLifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IvyLifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A826D30821CE237E00B3EA5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A826D30A21CE237E00B3EA5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +59,7 @@
 		A826D32321CF8A6D00B3EA5D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		A826D32521CF8AA900B3EA5D /* IvyAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyAuth.swift; sourceTree = "<group>"; };
 		A826D32721D0460A00B3EA5D /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
-		A826D32F21D0633400B3EA5D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A826D32F21D0633400B3EA5D /* SetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEntry.swift; sourceTree = "<group>"; };
 		A826D33121D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyOverviewCollectionController.swift; sourceTree = "<group>"; };
 		A826D33421D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverviewCollectionCell.swift; sourceTree = "<group>"; };
 		A826D33721D1828D00B3EA5D /* WorkoutCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionController.swift; sourceTree = "<group>"; };
@@ -93,6 +103,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A8123FBD21D8D716009D6A68 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8123FC421D8D783009D6A68 /* UserMetrics.swift */,
+				A826D32F21D0633400B3EA5D /* SetEntry.swift */,
+				A8123FC021D8D748009D6A68 /* ExerciseGoal.swift */,
+				A8123FBE21D8D734009D6A68 /* WeeklyRoutine.swift */,
+				A8123FC221D8D758009D6A68 /* WorkoutGoal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A826D2FC21CE237E00B3EA5D = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +138,11 @@
 			children = (
 				A826D30821CE237E00B3EA5D /* AppDelegate.swift */,
 				A826D32221CF8A3800B3EA5D /* IvyAPI */,
-				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */,
+				A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */,
+				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D33321D1810600B3EA5D /* Workout */,
-				A826D32F21D0633400B3EA5D /* Models.swift */,
+				A8123FBD21D8D716009D6A68 /* Models */,
 				A8E1B6CB21D897970025D7DA /* DataGenerators.swift */,
 				A826D32921D0462F00B3EA5D /* UIKit+Extensions */,
 				A826D30F21CE237F00B3EA5D /* Assets.xcassets */,
@@ -342,14 +365,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8123FC121D8D748009D6A68 /* ExerciseGoal.swift in Sources */,
 				A826D32121CF71BD00B3EA5D /* IvyAPIManager.swift in Sources */,
 				A868DA0821D1CC2700176E63 /* ExerciseDetailHeader.swift in Sources */,
 				A826D33521D1811900B3EA5D /* WeeklyOverviewCollectionCell.swift in Sources */,
 				A826D34521D1BB1600B3EA5D /* ExerciseEntryController.swift in Sources */,
+				A8123FBF21D8D734009D6A68 /* WeeklyRoutine.swift in Sources */,
 				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
 				A8E1B6CC21D897970025D7DA /* DataGenerators.swift in Sources */,
-				A826D33021D0633400B3EA5D /* Models.swift in Sources */,
+				A8123FC721D8E02C009D6A68 /* CalibrationScreen.swift in Sources */,
+				A826D33021D0633400B3EA5D /* SetEntry.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
+				A8123FC521D8D783009D6A68 /* UserMetrics.swift in Sources */,
+				A8123FC321D8D758009D6A68 /* WorkoutGoal.swift in Sources */,
 				A826D33221D17FBF00B3EA5D /* WeeklyOverviewCollectionController.swift in Sources */,
 				A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */,
 				A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */,
