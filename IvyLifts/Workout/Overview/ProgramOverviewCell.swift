@@ -23,7 +23,6 @@ class ProgramOverviewCell: UICollectionViewCell {
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                     NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
-                log.error("\(exerciseOne.exercise) is AMRAP: \(exerciseOne.isAMRAP)")
                 exerciseOneNameLabel.attributedText = attributedText
             } else {
                 exerciseOneNameLabel.text = exerciseOne.exercise
@@ -34,7 +33,6 @@ class ProgramOverviewCell: UICollectionViewCell {
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                     NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
-                log.error("\(exerciseTwo.exercise) is AMRAP: \(exerciseTwo.isAMRAP)")
                 exerciseTwoNameLabel.attributedText = attributedText
             } else {
                 exerciseTwoNameLabel.text = exerciseTwo.exercise
@@ -45,7 +43,6 @@ class ProgramOverviewCell: UICollectionViewCell {
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                     NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
-                log.error("\(exerciseThree.exercise) is AMRAP: \(exerciseThree.isAMRAP)")
                 exerciseThreeNameLabel.attributedText = attributedText
             } else {
                 exerciseThreeNameLabel.text = exerciseThree.exercise
@@ -56,11 +53,9 @@ class ProgramOverviewCell: UICollectionViewCell {
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                     NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
-                log.error("\(exerciseFour.exercise) is AMRAP: \(exerciseFour.isAMRAP)")
                 exerciseFourNameLabel.attributedText = attributedText
             } else {
                 exerciseFourNameLabel.text = exerciseFour.exercise
-                
             }
             
             let goalOne = "\(exerciseOne.numSets) x \(exerciseOne.numReps) - \(exerciseOne.targetWeight) lbs"
