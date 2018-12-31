@@ -14,6 +14,9 @@
 		A8123FC521D8D783009D6A68 /* PersonalRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC421D8D783009D6A68 /* PersonalRecords.swift */; };
 		A8123FC721D8E02C009D6A68 /* CalibrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */; };
 		A8123FCA21D967FA009D6A68 /* IvyLiftsProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FC921D967FA009D6A68 /* IvyLiftsProgram.swift */; };
+		A8123FCC21D96F4F009D6A68 /* IvyBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FCB21D96F4F009D6A68 /* IvyBrain.swift */; };
+		A8123FCE21D97250009D6A68 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FCD21D97250009D6A68 /* SettingsController.swift */; };
+		A8123FD021D97765009D6A68 /* OneRepCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8123FCF21D97765009D6A68 /* OneRepCalculator.swift */; };
 		A826D30921CE237E00B3EA5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30821CE237E00B3EA5D /* AppDelegate.swift */; };
 		A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D30A21CE237E00B3EA5D /* LoginViewController.swift */; };
 		A826D30E21CE237E00B3EA5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A826D30C21CE237E00B3EA5D /* Main.storyboard */; };
@@ -47,6 +50,9 @@
 		A8123FC421D8D783009D6A68 /* PersonalRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecords.swift; sourceTree = "<group>"; };
 		A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationScreen.swift; sourceTree = "<group>"; };
 		A8123FC921D967FA009D6A68 /* IvyLiftsProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyLiftsProgram.swift; sourceTree = "<group>"; };
+		A8123FCB21D96F4F009D6A68 /* IvyBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyBrain.swift; sourceTree = "<group>"; };
+		A8123FCD21D97250009D6A68 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		A8123FCF21D97765009D6A68 /* OneRepCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepCalculator.swift; sourceTree = "<group>"; };
 		A826D30521CE237E00B3EA5D /* IvyLifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IvyLifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A826D30821CE237E00B3EA5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A826D30A21CE237E00B3EA5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +148,10 @@
 				A826D30821CE237E00B3EA5D /* AppDelegate.swift */,
 				A826D32221CF8A3800B3EA5D /* IvyAPI */,
 				A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */,
+				A8123FCF21D97765009D6A68 /* OneRepCalculator.swift */,
 				A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */,
+				A8123FCD21D97250009D6A68 /* SettingsController.swift */,
+				A8123FCB21D96F4F009D6A68 /* IvyBrain.swift */,
 				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D33321D1810600B3EA5D /* Workout */,
 				A8123FBD21D8D716009D6A68 /* Models */,
@@ -377,12 +386,15 @@
 				A826D30B21CE237E00B3EA5D /* LoginViewController.swift in Sources */,
 				A8E1B6CC21D897970025D7DA /* DataGenerators.swift in Sources */,
 				A8123FC721D8E02C009D6A68 /* CalibrationScreen.swift in Sources */,
+				A8123FCC21D96F4F009D6A68 /* IvyBrain.swift in Sources */,
 				A826D33021D0633400B3EA5D /* Entry.swift in Sources */,
 				A8123FCA21D967FA009D6A68 /* IvyLiftsProgram.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
 				A8123FC521D8D783009D6A68 /* PersonalRecords.swift in Sources */,
+				A8123FCE21D97250009D6A68 /* SettingsController.swift in Sources */,
 				A8123FC321D8D758009D6A68 /* Session.swift in Sources */,
 				A826D33221D17FBF00B3EA5D /* ProgramOverviewController.swift in Sources */,
+				A8123FD021D97765009D6A68 /* OneRepCalculator.swift in Sources */,
 				A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */,
 				A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */,
 				A826D31D21CE2E1800B3EA5D /* SignUpViewController.swift in Sources */,

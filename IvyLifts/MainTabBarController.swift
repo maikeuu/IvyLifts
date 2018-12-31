@@ -27,7 +27,12 @@ class MainTabBarController: UITabBarController {
         log.info("MainTabBarController loaded!")
         view.backgroundColor = .white
         setupRealm()
-        
+        createIvyBrain()
+    }
+    
+    var ivyBrain: IvyBrain!
+    
+    func createIvyBrain() {
         let userMetric = realm.objects(PersonalRecords.self)
         if userMetric.count == 0 {
             DispatchQueue.main.async {
@@ -36,17 +41,22 @@ class MainTabBarController: UITabBarController {
                 self.present(calibrateViewController, animated: true, completion: nil)
             }
             return
+        } else {
+            self.ivyBrain = IvyBrain(personalRecords: userMetric[0])
+            setupControllers()
         }
-        setupControllers()
     }
     
     func setupControllers() {
+        log.info("Setting up MainTabBar Controllers")
         let flowLayout = UICollectionViewFlowLayout()
-        let weeklyOverviewController = ProgramOverviewController(collectionViewLayout: flowLayout)
-        let navigationScreenOne = UINavigationController(rootViewController: weeklyOverviewController)
-        weeklyOverviewController.title = "Home"
-        weeklyOverviewController.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")
-        weeklyOverviewController.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
+        let programOverviewController = ProgramOverviewController(collectionViewLayout: flowLayout)
+        programOverviewController.ivyBrain = self.ivyBrain
+        
+        programOverviewController.title = "Home"
+        programOverviewController.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")
+        programOverviewController.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
+        let navigationScreenOne = UINavigationController(rootViewController: programOverviewController)
         
         let vcTwo = UIViewController()
         vcTwo.view.backgroundColor = .orange
@@ -54,8 +64,8 @@ class MainTabBarController: UITabBarController {
         vcTwo.tabBarItem.image = #imageLiteral(resourceName: "list")
         let navTwo = UINavigationController(rootViewController: vcTwo)
         
-        let vcThree = UIViewController()
-        vcThree.view.backgroundColor = .yellow
+        let vcThree = SettingsController()
+        vcThree.realm = realm
         vcThree.title = "Settings"
         vcThree.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
         vcThree.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")

@@ -9,10 +9,15 @@
 import Foundation
 
 /// Represents a single day workout, containing the fitness goals to reach for that workout
-protocol Session {
+struct Session {
     /// Exercises to do per day
-    var exercises: [Goal] { get set }
+    var fitnessGoals: [FitnessGoal] //{ get }
     
     /// Date session was created
-    var date: Date { get set }
+    var date: Date = Date() //{ get }
+    
+    init(exercises: [FitnessGoal], date: Date = Date()) {
+        self.fitnessGoals = exercises
+        self.date = date
+    }
 }

@@ -11,21 +11,31 @@ import UIKit
 /// This class is the controller that shows the Week A / Week B Workouts.
 class ProgramOverviewController: UICollectionViewController {
     
+    /// Initialize the week to start on oddWeek
+    var ivyBrain: IvyBrain! {
+        didSet {
+            self.isOddWeek = true
+            log.error("Setting")
+        }
+    }
+    
     var isOddWeek = true {
         didSet {
             if isOddWeek {
-                self.workouts = WeeklyRoutineGenerator.createOddWeek().sessions
                 self.navigationItem.title = "Odd Week"
+                self.workouts = self.ivyBrain.program.oddWeek().sessions
             } else {
-                self.workouts = WeeklyRoutineGenerator.createEvenWeek().sessions
                 self.navigationItem.title = "Even Week"
+                self.workouts = self.ivyBrain.program.evenWeek().sessions
             }
         }
     }
     
-    var workouts: [Session] = WeeklyRoutineGenerator.createOddWeek().sessions {
+    var workouts: [Session] = [] {
         didSet {
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -53,7 +63,6 @@ class ProgramOverviewController: UICollectionViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Odd Week"
         
-        
         view.backgroundColor = UIColor.background()
         setupCollectionView()
         view.addSubview(switchWeekButton)
@@ -74,16 +83,16 @@ class ProgramOverviewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         
-        /// Make the cell have a highlight animation on click
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-            cell?.backgroundColor = UIColor.init(white: 255/255, alpha: 0.7)
-        }, completion: { _ in
-          cell?.backgroundColor = UIColor.white
-        })
+//        /// Make the cell have a highlight animation on click
+//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+//            cell?.backgroundColor = UIColor.init(white: 255/255, alpha: 0.7)
+//        }, completion: { _ in
+//          cell?.backgroundColor = UIColor.white
+//        })
         
         let flow = UICollectionViewFlowLayout()
         let workoutController = SessionCollectionController(collectionViewLayout: flow)
-        workoutController.exercises = workouts[indexPath.item].exercises
+        workoutController.exercises = workouts[indexPath.item].fitnessGoals
         
         self.navigationController?.pushViewController(workoutController, animated: true)
         
@@ -96,7 +105,7 @@ class ProgramOverviewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ProgramOverviewCell
-        cell.model = workouts[indexPath.row]
+        cell.model = workouts[indexPath.item]
         
         // Temporary workaround to labeling the days
         if isOddWeek {

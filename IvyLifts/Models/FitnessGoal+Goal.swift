@@ -39,7 +39,7 @@ struct FitnessGoal: Goal {
         self.exercise = exerciseName
         self.numSets = numSets
         self.numReps = numReps
-        self.targetWeight = targetWeight
+        self.targetWeight = targetWeight.truncate(places: 2)
         self.isAMRAP = isAMRAP
     }
 }

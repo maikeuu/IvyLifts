@@ -12,21 +12,61 @@ class ProgramOverviewCell: UICollectionViewCell {
     var model: Session? {
         didSet {
             // TODO: - Refactor this LOL
-            guard let model = model else { return }
-            let exerciseOne = model.exercises[0]
-            let exerciseTwo = model.exercises[1]
-            let exerciseThree = model.exercises[2]
-            let exerciseFour = model.exercises[3]
+            guard let session = model else { return }
+            let exerciseOne = session.fitnessGoals[0]
+            let exerciseTwo = session.fitnessGoals[1]
+            let exerciseThree = session.fitnessGoals[2]
+            let exerciseFour = session.fitnessGoals[3]
             
-            exerciseOneNameLabel.text = exerciseOne.exercise
-            exerciseTwoNameLabel.text = exerciseTwo.exercise
-            exerciseThreeNameLabel.text = exerciseThree.exercise
-            exerciseFourNameLabel.text = exerciseFour.exercise
+            if exerciseOne.isAMRAP {
+                let attributedText = NSMutableAttributedString(string: exerciseOne.exercise, attributes: [
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+                    NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+                log.error("\(exerciseOne.exercise) is AMRAP: \(exerciseOne.isAMRAP)")
+                exerciseOneNameLabel.attributedText = attributedText
+            } else {
+                exerciseOneNameLabel.text = exerciseOne.exercise
+            }
             
-            let goalOne = "\(exerciseOne.numReps) x \(exerciseOne.numSets) - \(exerciseOne.targetWeight) lbs"
-            let goalTwo = "\(exerciseTwo.numReps) x \(exerciseTwo.numSets) - \(exerciseTwo.targetWeight) lbs"
-            let goalThree = "\(exerciseThree.numReps) x \(exerciseThree.numSets) - \(exerciseThree.targetWeight) lbs"
-            let goalFour = "\(exerciseFour.numReps) x \(exerciseFour.numSets) - \(exerciseFour.targetWeight) lbs"
+            if exerciseTwo.isAMRAP {
+                let attributedText = NSMutableAttributedString(string: exerciseTwo.exercise, attributes: [
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+                    NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+                log.error("\(exerciseTwo.exercise) is AMRAP: \(exerciseTwo.isAMRAP)")
+                exerciseTwoNameLabel.attributedText = attributedText
+            } else {
+                exerciseTwoNameLabel.text = exerciseTwo.exercise
+            }
+            
+            if exerciseThree.isAMRAP {
+                let attributedText = NSMutableAttributedString(string: exerciseThree.exercise, attributes: [
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+                    NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+                log.error("\(exerciseThree.exercise) is AMRAP: \(exerciseThree.isAMRAP)")
+                exerciseThreeNameLabel.attributedText = attributedText
+            } else {
+                exerciseThreeNameLabel.text = exerciseThree.exercise
+            }
+            
+            if exerciseFour.isAMRAP {
+                let attributedText = NSMutableAttributedString(string: exerciseFour.exercise, attributes: [
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+                    NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+                log.error("\(exerciseFour.exercise) is AMRAP: \(exerciseFour.isAMRAP)")
+                exerciseFourNameLabel.attributedText = attributedText
+            } else {
+                exerciseFourNameLabel.text = exerciseFour.exercise
+                
+            }
+            
+            let goalOne = "\(exerciseOne.numSets) x \(exerciseOne.numReps) - \(exerciseOne.targetWeight) lbs"
+            let goalTwo = "\(exerciseTwo.numSets) x \(exerciseTwo.numReps) - \(exerciseTwo.targetWeight) lbs"
+            let goalThree = "\(exerciseThree.numSets) x \(exerciseThree.numReps) - \(exerciseThree.targetWeight) lbs"
+            let goalFour = "\(exerciseFour.numSets) x \(exerciseFour.numReps) - \(exerciseFour.targetWeight) lbs"
             
             exerciseOneGoalLabel.text = goalOne
             exerciseTwoGoalLabel.text = goalTwo
@@ -45,8 +85,6 @@ class ProgramOverviewCell: UICollectionViewCell {
         lineSeperator.pinHorizontalSides(left: lb.leftAnchor, right: lb.rightAnchor)
         lineSeperator.pinTopAnchor(to: lb.bottomAnchor)
         lineSeperator.setHeight(constant: 0.5)
-        
-        
         return lb
     }()
     
@@ -122,6 +160,14 @@ class ProgramOverviewCell: UICollectionViewCell {
         titleLabel.setHeight(constant: 35)
         bigStack.pinVerticalSides(top: titleLabel.bottomAnchor, bottom: bottomAnchor)
         bigStack.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
+    }
+    
+    override func prepareForReuse() {
+        exerciseOneNameLabel.text = ""
+        exerciseTwoNameLabel.text = ""
+        exerciseThreeNameLabel.text = ""
+        exerciseFourNameLabel.text = ""
+        super.prepareForReuse()
     }
     
     required init?(coder aDecoder: NSCoder) {

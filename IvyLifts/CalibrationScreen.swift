@@ -21,6 +21,24 @@ class CalibrationController: UIViewController {
         return lb
     }()
     
+    let benchPressRepsTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .decimalPad
+        tf.placeholder = "8 reps"
+        tf.textAlignment = .center
+        tf.backgroundColor = .white
+        tf.layer.cornerRadius = 5
+        tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
+        
+        let lineSeperator = UIView()
+        tf.addSubview(lineSeperator)
+        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.backgroundColor = .black
+        lineSeperator.pinHorizontalSides(left: tf.leftAnchor, leftPadding: 0, right: tf.rightAnchor, rightPadding: 0)
+        lineSeperator.pinTopAnchor(to: tf.bottomAnchor, padding: 0)
+        return tf
+    }()
+    
     let benchPressCalibrationTextField: UITextField = {
         let tf = UITextField()
         tf.keyboardType = .decimalPad
@@ -29,7 +47,6 @@ class CalibrationController: UIViewController {
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 5
         tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
-//        tf.backgroundColor = .red
         
         let lineSeperator = UIView()
         tf.addSubview(lineSeperator)
@@ -50,6 +67,24 @@ class CalibrationController: UIViewController {
         return lb
     }()
     
+    let squatRepsTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .decimalPad
+        tf.placeholder = "4 reps"
+        tf.textAlignment = .center
+        tf.backgroundColor = .white
+        tf.layer.cornerRadius = 5
+        tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
+        
+        let lineSeperator = UIView()
+        tf.addSubview(lineSeperator)
+        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.backgroundColor = .black
+        lineSeperator.pinHorizontalSides(left: tf.leftAnchor, leftPadding: 0, right: tf.rightAnchor, rightPadding: 0)
+        lineSeperator.pinTopAnchor(to: tf.bottomAnchor, padding: 0)
+        return tf
+    }()
+    
     let squatCalibrationTextField: UITextField = {
         let tf = UITextField()
         tf.keyboardType = .decimalPad
@@ -58,7 +93,6 @@ class CalibrationController: UIViewController {
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 5
         tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
-        //        tf.backgroundColor = .red
         
         let lineSeperator = UIView()
         tf.addSubview(lineSeperator)
@@ -71,12 +105,30 @@ class CalibrationController: UIViewController {
     
     let shoulderPressLabel: UILabel = {
         let lb = UILabel()
-        lb.text = "Squat"
+        lb.text = "Shoulder Press"
         lb.textAlignment = .center
         lb.backgroundColor = .white
         lb.layer.cornerRadius = 5
         
         return lb
+    }()
+    
+    let shoulderPressRepsTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .decimalPad
+        tf.placeholder = "235 lbs"
+        tf.textAlignment = .center
+        tf.backgroundColor = .white
+        tf.layer.cornerRadius = 5
+        tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
+        
+        let lineSeperator = UIView()
+        tf.addSubview(lineSeperator)
+        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.backgroundColor = .black
+        lineSeperator.pinHorizontalSides(left: tf.leftAnchor, leftPadding: 0, right: tf.rightAnchor, rightPadding: 0)
+        lineSeperator.pinTopAnchor(to: tf.bottomAnchor, padding: 0)
+        return tf
     }()
     
     let shoulderPressCalibrationTextField: UITextField = {
@@ -87,7 +139,6 @@ class CalibrationController: UIViewController {
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 5
         tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
-        //        tf.backgroundColor = .red
         
         let lineSeperator = UIView()
         tf.addSubview(lineSeperator)
@@ -108,6 +159,24 @@ class CalibrationController: UIViewController {
         return lb
     }()
     
+    let deadliftRepsTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .decimalPad
+        tf.placeholder = "2 reps"
+        tf.textAlignment = .center
+        tf.backgroundColor = .white
+        tf.layer.cornerRadius = 5
+        tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
+        
+        let lineSeperator = UIView()
+        tf.addSubview(lineSeperator)
+        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.backgroundColor = .black
+        lineSeperator.pinHorizontalSides(left: tf.leftAnchor, leftPadding: 0, right: tf.rightAnchor, rightPadding: 0)
+        lineSeperator.pinTopAnchor(to: tf.bottomAnchor, padding: 0)
+        return tf
+    }()
+    
     let deadLiftCalibrationTextField: UITextField = {
         let tf = UITextField()
         tf.keyboardType = .decimalPad
@@ -116,8 +185,6 @@ class CalibrationController: UIViewController {
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 5
         tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
-        //        tf.backgroundColor = .red
-        
         let lineSeperator = UIView()
         tf.addSubview(lineSeperator)
         lineSeperator.setHeight(constant: 0.5)
@@ -139,6 +206,24 @@ class CalibrationController: UIViewController {
         return lb
     }()
     
+    let barbellRowRepsTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .decimalPad
+        tf.placeholder = "8 reps"
+        tf.textAlignment = .center
+        tf.backgroundColor = .white
+        tf.layer.cornerRadius = 5
+        tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
+        
+        let lineSeperator = UIView()
+        tf.addSubview(lineSeperator)
+        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.backgroundColor = .black
+        lineSeperator.pinHorizontalSides(left: tf.leftAnchor, leftPadding: 0, right: tf.rightAnchor, rightPadding: 0)
+        lineSeperator.pinTopAnchor(to: tf.bottomAnchor, padding: 0)
+        return tf
+    }()
+    
     let barbellRowCalibrationTextField: UITextField = {
         let tf = UITextField()
         tf.keyboardType = .decimalPad
@@ -147,8 +232,6 @@ class CalibrationController: UIViewController {
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 5
         tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
-        
-        //        tf.backgroundColor = .red
         
         let lineSeperator = UIView()
         tf.addSubview(lineSeperator)
@@ -166,6 +249,24 @@ class CalibrationController: UIViewController {
         lb.backgroundColor = .white
         lb.layer.cornerRadius = 5
         return lb
+    }()
+    
+    let pullUpsRepsTextField: UITextField = {
+        let tf = UITextField()
+        tf.keyboardType = .decimalPad
+        tf.placeholder = "32 reps"
+        tf.textAlignment = .center
+        tf.backgroundColor = .white
+        tf.layer.cornerRadius = 5
+        tf.addTarget(self, action: #selector(handleInput), for: .editingChanged)
+        
+        let lineSeperator = UIView()
+        tf.addSubview(lineSeperator)
+        lineSeperator.setHeight(constant: 0.5)
+        lineSeperator.backgroundColor = .black
+        lineSeperator.pinHorizontalSides(left: tf.leftAnchor, leftPadding: 0, right: tf.rightAnchor, rightPadding: 0)
+        lineSeperator.pinTopAnchor(to: tf.bottomAnchor, padding: 0)
+        return tf
     }()
     
     let pullUpsCalibrationTextField: UITextField = {
@@ -188,9 +289,12 @@ class CalibrationController: UIViewController {
     }()
     
     @objc func handleInput() {
-        let isFormFilledOut = benchPressCalibrationTextField.text?.count ?? 0 > 0 && squatCalibrationTextField.text?.count ?? 0 > 0 &&
-                deadLiftCalibrationTextField.text?.count ?? 0 > 0 && barbellRowCalibrationTextField.text?.count ?? 0 > 0 &&
-                squatCalibrationTextField.text?.count ?? 0 > 0 && pullUpsCalibrationTextField.text?.count ?? 0 > 0
+        let isFormFilledOut = benchPressCalibrationTextField.text?.count ?? 0 > 0 && benchPressRepsTextField.text?.count ?? 0 > 0 &&
+                squatCalibrationTextField.text?.count ?? 0 > 0 && squatRepsTextField.text?.count ?? 0 > 0 &&
+                deadLiftCalibrationTextField.text?.count ?? 0 > 0 && deadliftRepsTextField.text?.count ?? 0 > 0 &&
+                barbellRowCalibrationTextField.text?.count ?? 0 > 0 && barbellRowRepsTextField.text?.count ?? 0 > 0 &&
+                shoulderPressCalibrationTextField.text?.count ?? 0 > 0 && shoulderPressRepsTextField.text?.count ?? 0 > 0 &&
+                pullUpsCalibrationTextField.text?.count ?? 0 > 0 && pullUpsRepsTextField.text?.count ?? 0 > 0
         
         if isFormFilledOut {
             doneButton.backgroundColor = .white
@@ -223,20 +327,27 @@ class CalibrationController: UIViewController {
         let shoulderPress = Double(shoulderPressCalibrationTextField.text!)!
         let pullUps = Double(pullUpsCalibrationTextField.text!)!
         
-        var userMetric = PersonalRecords()
-        userMetric.bench = bench
-        userMetric.squat = squat
-        userMetric.deadlift = deadlift
-        userMetric.barbellRow = barbellRow
-        userMetric.shoulderPress = shoulderPress
-        userMetric.pullUps = pullUps
+        let benchReps = Double(benchPressRepsTextField.text!)!
+        let squatReps = Double(squatRepsTextField.text!)!
+        let deadliftReps = Double(deadliftRepsTextField.text!)!
+        let barbellRowReps = Double(barbellRowRepsTextField.text!)!
+        let shoulderPressReps = Double(shoulderPressRepsTextField.text!)!
+        let pullUpsReps = Double(pullUpsRepsTextField.text!)!
+        
+        let userMetric = PersonalRecords()
+        userMetric.bench = OneRepCalculator.calculate(reps: benchReps, weight: bench)
+        userMetric.squat = OneRepCalculator.calculate(reps: squatReps, weight: squat)
+        userMetric.deadlift = OneRepCalculator.calculate(reps: deadliftReps, weight: deadlift)
+        userMetric.barbellRow = OneRepCalculator.calculate(reps: barbellRowReps, weight: barbellRow)
+        userMetric.shoulderPress = OneRepCalculator.calculate(reps: shoulderPressReps, weight: shoulderPress)
+        userMetric.pullUps = OneRepCalculator.calculate(reps: pullUpsReps, weight: pullUps)
         
         try! realm.write {
             self.realm.add(userMetric)
-            log.info("Adding UserMetric to persistence!")
+            log.info("Adding PersonalRecord to persistence!")
             
             guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
-            mainTabBarController.setupControllers()
+            mainTabBarController.createIvyBrain()
             
             self.dismiss(animated: true, completion: nil)
         }
@@ -256,7 +367,37 @@ class CalibrationController: UIViewController {
 //
 //        view.addSubview(benchStack)
         
-        let bigStack = UIStackView(arrangedSubviews: [benchPressLabel, benchPressCalibrationTextField, squatLabel, squatCalibrationTextField, deadLiftLabel, deadLiftCalibrationTextField, barbellRowLabel, barbellRowCalibrationTextField, shoulderPressLabel, shoulderPressCalibrationTextField, pullUpsLabel, pullUpsCalibrationTextField])
+        let benchStack = UIStackView(arrangedSubviews: [benchPressRepsTextField, benchPressCalibrationTextField])
+        benchStack.axis = .horizontal
+        benchStack.distribution = .fillEqually
+        benchStack.spacing = 8
+        
+        let squatStack = UIStackView(arrangedSubviews: [squatRepsTextField, squatCalibrationTextField])
+        squatStack.axis = .horizontal
+        squatStack.distribution = .fillEqually
+        squatStack.spacing = 8
+        
+        let deadliftStack = UIStackView(arrangedSubviews: [deadliftRepsTextField, deadLiftCalibrationTextField])
+        deadliftStack.axis = .horizontal
+        deadliftStack.distribution = .fillEqually
+        deadliftStack.spacing = 8
+        
+        let barbellRowStack = UIStackView(arrangedSubviews: [barbellRowRepsTextField, barbellRowCalibrationTextField])
+        barbellRowStack.axis = .horizontal
+        barbellRowStack.distribution = .fillEqually
+        barbellRowStack.spacing = 8
+        
+        let shoulderPressStack = UIStackView(arrangedSubviews: [shoulderPressRepsTextField, shoulderPressCalibrationTextField])
+        shoulderPressStack.axis = .horizontal
+        shoulderPressStack.distribution = .fillEqually
+        shoulderPressStack.spacing = 8
+        
+        let pullUpsStack = UIStackView(arrangedSubviews: [pullUpsRepsTextField, pullUpsCalibrationTextField])
+        pullUpsStack.axis = .horizontal
+        pullUpsStack.distribution = .fillEqually
+        pullUpsStack.spacing = 8
+        
+        let bigStack = UIStackView(arrangedSubviews: [benchPressLabel, benchStack, squatLabel, squatStack, deadLiftLabel, deadliftStack, barbellRowLabel, barbellRowStack, shoulderPressLabel, shoulderPressStack, pullUpsLabel, pullUpsStack])
         bigStack.axis = .vertical
         bigStack.distribution = .fillEqually
         bigStack.spacing = 8
