@@ -57,6 +57,11 @@ class MainTabBarController: UITabBarController {
         programOverviewController.tabBarItem.image = #imageLiteral(resourceName: "home_unselected")
         programOverviewController.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
         let navigationScreenOne = UINavigationController(rootViewController: programOverviewController)
+        navigationScreenOne.navigationBar.tintColor = .black
+        
+        let routinesOverviewController = RoutineCollectionController(collectionViewLayout: flowLayout)
+        routinesOverviewController.title = "Routines"
+        let navigationScreenTwo = UINavigationController(rootViewController: routinesOverviewController)
         
         let vcTwo = UIViewController()
         vcTwo.view.backgroundColor = .orange
@@ -74,7 +79,7 @@ class MainTabBarController: UITabBarController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: nil)
         
-        viewControllers = [navigationScreenOne, navTwo, navThree]
+        viewControllers = [navigationScreenTwo, navigationScreenOne, navTwo, navThree]
         tabBar.tintColor = .black
     }
 }

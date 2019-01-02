@@ -16,7 +16,10 @@ struct Session {
     /// Date session was created
     var date: Date = Date() //{ get }
     
-    init(exercises: [FitnessGoal], date: Date = Date()) {
+    let sessionName: String
+    
+    init(sessionName: String, exercises: [FitnessGoal], date: Date = Date()) {
+        self.sessionName = sessionName
         self.fitnessGoals = exercises
         self.date = date
     }

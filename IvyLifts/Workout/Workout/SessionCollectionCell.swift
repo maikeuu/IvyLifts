@@ -10,6 +10,16 @@ import UIKit
 
 class SessionCollectionCell: UICollectionViewCell {
     
+    var isFinished: Bool = false {
+        didSet {
+            if isFinished {
+                self.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+                self.entriesCollection.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+                log.error("Setting session collection cell to be finished!")
+            }
+        }
+    }
+    
     var model: FitnessGoal? {
         didSet {
             guard let model = model else { return }
@@ -64,7 +74,9 @@ class SessionCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        self.backgroundColor = UIColor(white: 1.0, alpha: 0.25)
+//        self.entriesCollection.backgroundColor = UIColor(white: 1.0, alpha: 0.75)
+        self.entriesCollection.backgroundColor = .clear
 //        layer.borderColor = UIColor.black.cgColor
 //        layer.borderWidth = 1
         layer.cornerRadius = 10
@@ -79,14 +91,14 @@ class SessionCollectionCell: UICollectionViewCell {
         detailsStackView.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
         
         addSubview(entriesCollection)
-        entriesCollection.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
-        entriesCollection.pinBottomAnchor(to: bottomAnchor, padding: 8)
-        entriesCollection.setHeight(constant: 80)
-        entriesCollection.register(RecordedEntryCell.self, forCellWithReuseIdentifier: "cellID")
-        entriesCollection.backgroundColor = .white
-        entriesCollection.dataSource = self
-        entriesCollection.delegate = self
-        entriesCollection.isHidden = true
+        self.entriesCollection.isUserInteractionEnabled = false
+        self.entriesCollection.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
+        self.entriesCollection.pinBottomAnchor(to: bottomAnchor, padding: 8)
+        self.entriesCollection.setHeight(constant: 80)
+        self.entriesCollection.register(RecordedEntryCell.self, forCellWithReuseIdentifier: "cellID")
+        self.entriesCollection.dataSource = self
+        self.entriesCollection.delegate = self
+//        self.entriesCollection.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -141,16 +153,12 @@ class RecordedEntryCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
-        setNumberLabel.textAlignment = .center
-        setNumberLabel.font = UIFont.systemFont(ofSize: 18)
-//        setNumberLabel.backgroundColor = .green
-//        recordedEntryLabel.backgroundColor = .blue
+        self.setNumberLabel.textAlignment = .center
+        self.setNumberLabel.font = UIFont.systemFont(ofSize: 18)
         
-        
-        recordedEntryLabel.textAlignment = .center
-        recordedEntryLabel.numberOfLines = 0
-        recordedEntryLabel.font = UIFont.systemFont(ofSize: 14)
+        self.recordedEntryLabel.textAlignment = .center
+        self.recordedEntryLabel.numberOfLines = 0
+        self.recordedEntryLabel.font = UIFont.systemFont(ofSize: 14)
         
         let stackView = UIStackView(arrangedSubviews: [setNumberLabel, recordedEntryLabel])
         stackView.axis = .vertical

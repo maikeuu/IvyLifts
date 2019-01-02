@@ -17,7 +17,6 @@ class CalibrationController: UIViewController {
         lb.textAlignment = .center
         lb.backgroundColor = .white
         lb.layer.cornerRadius = 5
-        
         return lb
     }()
     

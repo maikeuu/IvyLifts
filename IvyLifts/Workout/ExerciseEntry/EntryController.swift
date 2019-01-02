@@ -42,9 +42,8 @@ class EntryController: UIViewController {
         view.backgroundColor = .background()
         setupHeader()
         setupCollectionView()
-        
         addCancelEditingTapGesture()
-         log.info("ExerciseEntryController loaded!")
+        log.info("ExerciseEntryController loaded!")
     }
     
     fileprivate func setupCollectionView() {

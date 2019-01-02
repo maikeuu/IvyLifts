@@ -57,7 +57,6 @@ class EntryCell: UICollectionViewCell {
     }()
     
     lazy var weightPerformedContainer: UIStackView = {
-        
         let label = UILabel()
         label.text = " lbs"
         
@@ -76,12 +75,6 @@ class EntryCell: UICollectionViewCell {
         layer.borderColor = UIColor.black.cgColor
         layer.cornerRadius = 3
         
-//        let stackview = UIStackView(arrangedSubviews: [setNumberLabel, weightPerformedContainer, numRepsContainer])
-//        stackview.distribution = .fillEqually
-//        stackview.axis = .horizontal
-//        stackview.spacing = 10
-//        addSubview(stackview)
-        
         addSubview(setNumberLabel)
         addSubview(weightPerformedContainer)
         addSubview(numRepsContainer)
@@ -97,8 +90,6 @@ class EntryCell: UICollectionViewCell {
         
         numRepsTextfield.delegate = self
         weightPerformedTextField.delegate = self
-//        stackview.pinHorizontalSides(left: leftAnchor, leftPadding: 16, right: rightAnchor, rightPadding: 16)
-//        stackview.pinVerticalSides(top: topAnchor, topPadding: 0, bottom: bottomAnchor, bottomPadding: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

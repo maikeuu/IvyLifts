@@ -21,21 +21,21 @@ struct WeeklyRoutineGenerator {
 
 struct WorkoutGenerator {
     static public func createOddDay() -> Session {
-        return Session(exercises: [ExerciseGoalGenerator.createBenchGoal(), ExerciseGoalGenerator.createSquatGoal(), ExerciseGoalGenerator.createShoulderPressGoal(), ExerciseGoalGenerator.createPullupsGoal()])
+        return Session(sessionName: "Day A", exercises: [ExerciseGoalGenerator.createBenchGoal(), ExerciseGoalGenerator.createSquatGoal(), ExerciseGoalGenerator.createShoulderPressGoal(), ExerciseGoalGenerator.createPullupsGoal()])
     }
     
     static public func createEvenDay() -> Session {
         let exercises: [FitnessGoal] = [ExerciseGoalGenerator.createBenchGoal(), ExerciseGoalGenerator.createDeadliftGoal(), ExerciseGoalGenerator.createShoulderPressGoal(), ExerciseGoalGenerator.createBarbellRowGoal()]
-        return Session(exercises: exercises)
+        return Session(sessionName: "Day B", exercises: exercises)
     }
     
     static public func createAMRAPOddDay() -> Session {
-        return Session(exercises: [ExerciseGoalGenerator.createAMRAPBenchGoal(), ExerciseGoalGenerator.createSquatGoal(),
+        return Session(sessionName: "Day A AMRAP", exercises: [ExerciseGoalGenerator.createAMRAPBenchGoal(), ExerciseGoalGenerator.createSquatGoal(),
                                    ExerciseGoalGenerator.createShoulderPressGoal(), ExerciseGoalGenerator.createAMRAPDeadliftGoal()])
     }
     
     static public func createAMRAPEvenDay() -> Session {
-        return Session(exercises: [ExerciseGoalGenerator.createAMRAPBenchGoal(), ExerciseGoalGenerator.createSquatGoal(),
+        return Session(sessionName: "Day B AMRAP", exercises: [ExerciseGoalGenerator.createAMRAPBenchGoal(), ExerciseGoalGenerator.createSquatGoal(),
                                    ExerciseGoalGenerator.createShoulderPressGoal(), ExerciseGoalGenerator.createAMRAPDeadliftGoal()])
     }
 }

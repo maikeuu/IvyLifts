@@ -22,49 +22,9 @@ struct IvyBrain {
     var personalRecords: PersonalRecords
     
     /// Exercises
-//
+//    /// 8 rep weight is 90% of 4 rep weight
 //    let conversionFactor = 0.90
-//
-//    /// Bench
-//    var benchFourRepWeight: Double
-//
-//    var benchEightRepWeight: Double {
-//        return benchFourRepWeight * conversionFactor
-//    }
-//    /// Squat
-//    var squatFourRepWeight: Double
-//
-//    var squatEightRepWeight: Double {
-//        return squatFourRepWeight * conversionFactor
-//    }
-//
-//    /// ShoulderPress
-//    var shoulderPressFourRepWeight: Double
-//
-//    var shoulderPressEightRepWeight: Double {
-//        return shoulderPressFourRepWeight * conversionFactor
-//    }
-//
-//    /// Deadlift
-//    var deadliftFourRepWeight: Double
-//
-//    var deadliftEightRepWeight: Double {
-//        return deadliftFourRepWeight * conversionFactor
-//    }
-//
-//    /// Pull Ups
-//    var pullUpsFourRepWeight: Double
-//
-//    var pullUpsEightRepWeight: Double {
-//        return pullUpsFourRepWeight * conversionFactor
-//    }
-//
-//    /// Barbell Rows
-//    var barbellRowFourRepWeight: Double
-//
-//    var barbellRowEightRepWeight: Double {
-//        return barbellRowFourRepWeight * conversionFactor
-//    }
+
     
     var program: IvyLiftsProgramGenerator
     
@@ -79,12 +39,6 @@ struct IvyBrain {
             pullUpsFourRep: IvyBrain.calculateFourRep(oneRepMax: personalRecords.pullUps),
             barbellRowFourRep: IvyBrain.calculateFourRep(oneRepMax: personalRecords.barbellRow)
         )
-//        self.benchFourRepWeight = IvyBrain.calculateFourRep(oneRepMax: personalRecords.bench)
-//        self.squatFourRepWeight = IvyBrain.calculateFourRep(oneRepMax: personalRecords.squat)
-//        self.shoulderPressFourRepWeight = IvyBrain.calculateFourRep(oneRepMax: personalRecords.shoulderPress)
-//        self.pullUpsFourRepWeight = IvyBrain.calculateFourRep(oneRepMax: personalRecords.pullUps)
-//        self.deadliftFourRepWeight = IvyBrain.calculateFourRep(oneRepMax: personalRecords.deadlift)
-//        self.barbellRowFourRepWeight = IvyBrain.calculateFourRep(oneRepMax: personalRecords.barbellRow)
     }
     
     func oddWeek() -> Program {
@@ -94,7 +48,6 @@ struct IvyBrain {
     func evenWeek() -> Program {
         return program.evenWeek()
     }
-    
     
     /// Uses the Brzycki Formula (1RM = weight * (36 / (37 - r))) to calculate the one rep max
     /// Debug method
@@ -173,7 +126,7 @@ struct IvyLiftsSessionGenerator {
                 IvyLiftsGoalGenerator.createShoulderEightRepGoal(shoulderPressEightRep: shoulderPressFourRepWeight * 0.90),
                 IvyLiftsGoalGenerator.createPullUpsFourRepGoal(pullUpsFourRep: pullUpsFourRepWeight)
                 ]
-            return Session(exercises: exercises)
+            return Session(sessionName: "Day A AMRAP", exercises: exercises)
         } else {
             let exercises = [
                 IvyLiftsGoalGenerator.createBenchFourRepGoal(benchFourRep: benchFourRepWeight, isAMRAP: isAMRAP),
@@ -181,7 +134,7 @@ struct IvyLiftsSessionGenerator {
                 IvyLiftsGoalGenerator.createShoulderEightRepGoal(shoulderPressEightRep: shoulderPressFourRepWeight * 0.90),
                 IvyLiftsGoalGenerator.createPullUpsEightRepGoal(pullUpsEightRep: pullUpsFourRepWeight * 0.90)
             ]
-            return Session(exercises: exercises)
+            return Session(sessionName: "Day A", exercises: exercises)
         }
     }
     
@@ -195,7 +148,7 @@ struct IvyLiftsSessionGenerator {
                 IvyLiftsGoalGenerator.createShoulderPressFourRepGoal(shoulderPressFourRep: shoulderPressFourRepWeight, isAMRAP: isAMRAP),
                 IvyLiftsGoalGenerator.createBarbellRowEightRepGoal(barbellRowEightRep: barbellRowsFourRepWeight * 0.90)
             ]
-            return Session(exercises: exercises)
+            return Session(sessionName: "Day B AMRAP", exercises: exercises)
         } else {
             if isEvenWeek {
                 let exercises = [
@@ -204,7 +157,7 @@ struct IvyLiftsSessionGenerator {
                     IvyLiftsGoalGenerator.createShoulderPressFourRepGoal(shoulderPressFourRep: shoulderPressFourRepWeight, isAMRAP: isAMRAP),
                     IvyLiftsGoalGenerator.createBarbellRowFourRepGoal(barbellRowFourRep: barbellRowsFourRepWeight)
                 ]
-                return Session(exercises: exercises)
+                return Session(sessionName: "Day B", exercises: exercises)
             } else {
                 let exercises = [
                     IvyLiftsGoalGenerator.createBenchEightRepGoal(benchEightRep: benchFourRepWeight * 0.90),
@@ -212,7 +165,7 @@ struct IvyLiftsSessionGenerator {
                     IvyLiftsGoalGenerator.createShoulderPressFourRepGoal(shoulderPressFourRep: shoulderPressFourRepWeight, isAMRAP: isAMRAP),
                     IvyLiftsGoalGenerator.createBarbellRowEightRepGoal(barbellRowEightRep: barbellRowsFourRepWeight * 0.90)
                 ]
-                return Session(exercises: exercises)
+                return Session(sessionName: "Day B", exercises: exercises)
             }
         }
     }

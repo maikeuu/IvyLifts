@@ -9,53 +9,51 @@
 import UIKit
 
 class ProgramOverviewCell: UICollectionViewCell {
+    
+    /// User has pressed the startWeek button, which should trigger changing the opacity of all the elements in the cell
+    var isActive: Bool = false {
+        didSet {
+            if isActive {
+                self.opacity = 1.0
+            }
+        }
+    }
+    
+    var opacity: CGFloat = 0.75
+    
     var model: Session? {
         didSet {
             // TODO: - Refactor this LOL
             guard let session = model else { return }
+            self.titleLabel.text = session.sessionName
+            
             let exerciseOne = session.fitnessGoals[0]
             let exerciseTwo = session.fitnessGoals[1]
             let exerciseThree = session.fitnessGoals[2]
             let exerciseFour = session.fitnessGoals[3]
             
             if exerciseOne.isAMRAP {
-                let attributedText = NSMutableAttributedString(string: exerciseOne.exercise, attributes: [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                    NSAttributedString.Key.foregroundColor: UIColor.red]
-                )
-                exerciseOneNameLabel.attributedText = attributedText
+                exerciseOneNameLabel.attributedText = setupAttributedText(string: exerciseOne.exercise, color: UIColor.red, opacity: opacity)
             } else {
-                exerciseOneNameLabel.text = exerciseOne.exercise
+                exerciseOneNameLabel.attributedText = setupAttributedText(string: exerciseOne.exercise, color: UIColor.black, opacity: opacity)
             }
             
             if exerciseTwo.isAMRAP {
-                let attributedText = NSMutableAttributedString(string: exerciseTwo.exercise, attributes: [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                    NSAttributedString.Key.foregroundColor: UIColor.red]
-                )
-                exerciseTwoNameLabel.attributedText = attributedText
+                exerciseTwoNameLabel.attributedText = setupAttributedText(string: exerciseTwo.exercise, color: UIColor.red, opacity: opacity)
             } else {
-                exerciseTwoNameLabel.text = exerciseTwo.exercise
+                exerciseTwoNameLabel.attributedText = setupAttributedText(string: exerciseTwo.exercise, color: UIColor.black, opacity: opacity)
             }
             
             if exerciseThree.isAMRAP {
-                let attributedText = NSMutableAttributedString(string: exerciseThree.exercise, attributes: [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                    NSAttributedString.Key.foregroundColor: UIColor.red]
-                )
-                exerciseThreeNameLabel.attributedText = attributedText
+                exerciseThreeNameLabel.attributedText = setupAttributedText(string: exerciseThree.exercise, color: UIColor.red, opacity: opacity)
             } else {
-                exerciseThreeNameLabel.text = exerciseThree.exercise
+                exerciseThreeNameLabel.attributedText = setupAttributedText(string: exerciseThree.exercise, color: UIColor.black, opacity: opacity)
             }
             
             if exerciseFour.isAMRAP {
-                let attributedText = NSMutableAttributedString(string: exerciseFour.exercise, attributes: [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                    NSAttributedString.Key.foregroundColor: UIColor.red]
-                )
-                exerciseFourNameLabel.attributedText = attributedText
+                exerciseFourNameLabel.attributedText = setupAttributedText(string: exerciseFour.exercise, color: UIColor.red, opacity: opacity)
             } else {
-                exerciseFourNameLabel.text = exerciseFour.exercise
+                exerciseFourNameLabel.attributedText = setupAttributedText(string: exerciseFour.exercise, color: UIColor.black, opacity: opacity)
             }
             
             let goalOne = "\(exerciseOne.numSets) x \(exerciseOne.numReps) - \(exerciseOne.targetWeight) lbs"
@@ -63,12 +61,20 @@ class ProgramOverviewCell: UICollectionViewCell {
             let goalThree = "\(exerciseThree.numSets) x \(exerciseThree.numReps) - \(exerciseThree.targetWeight) lbs"
             let goalFour = "\(exerciseFour.numSets) x \(exerciseFour.numReps) - \(exerciseFour.targetWeight) lbs"
             
-            exerciseOneGoalLabel.text = goalOne
-            exerciseTwoGoalLabel.text = goalTwo
-            exerciseThreeGoalLabel.text = goalThree
-            exerciseFourGoalLabel.text = goalFour
+            exerciseOneGoalLabel.attributedText = setupAttributedText(string: goalOne, color: .black, opacity: opacity)
+            exerciseTwoGoalLabel.attributedText = setupAttributedText(string: goalTwo, color: .black, opacity: opacity)
+            exerciseThreeGoalLabel.attributedText = setupAttributedText(string: goalThree, color: .black, opacity: opacity)
+            exerciseFourGoalLabel.attributedText = setupAttributedText(string: goalFour, color: .black, opacity: opacity)
         }
     }
+    
+    func setupAttributedText(string: String, color: UIColor, opacity: CGFloat) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: string, attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+            NSAttributedString.Key.foregroundColor: color.withAlphaComponent(opacity)]
+        )
+    }
+    
     
     let titleLabel: UILabel = {
         let lb = UILabel()
@@ -84,22 +90,10 @@ class ProgramOverviewCell: UICollectionViewCell {
     }()
     
     // Name Labels
-    let exerciseOneNameLabel: UILabel = {
-        let lb = UILabel()
-        return lb
-    }()
-    let exerciseTwoNameLabel: UILabel = {
-        let lb = UILabel()
-        return lb
-    }()
-    let exerciseThreeNameLabel: UILabel = {
-        let lb = UILabel()
-        return lb
-    }()
-    let exerciseFourNameLabel: UILabel = {
-        let lb = UILabel()
-        return lb
-    }()
+    let exerciseOneNameLabel = UILabel()
+    let exerciseTwoNameLabel = UILabel()
+    let exerciseThreeNameLabel = UILabel()
+    let exerciseFourNameLabel = UILabel()
     
     // Weight labels
     let exerciseOneGoalLabel: UILabel = {
@@ -126,9 +120,8 @@ class ProgramOverviewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
-        
         layer.cornerRadius = 10
+        backgroundColor = UIColor(white: 1.0, alpha: opacity)
         
         let stackOne = UIStackView(arrangedSubviews: [exerciseOneNameLabel, exerciseOneGoalLabel])
         stackOne.axis = .horizontal
@@ -148,8 +141,8 @@ class ProgramOverviewCell: UICollectionViewCell {
         bigStack.axis = .vertical
         bigStack.distribution = .fillEqually
         
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(bigStack)
+        addSubview(titleLabel)
+        addSubview(bigStack)
         titleLabel.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
         titleLabel.pinTopAnchor(to: topAnchor)
         titleLabel.setHeight(constant: 35)
@@ -157,6 +150,7 @@ class ProgramOverviewCell: UICollectionViewCell {
         bigStack.pinHorizontalSides(left: leftAnchor, leftPadding: 4, right: rightAnchor, rightPadding: 4)
     }
     
+    /// Done so that the exerciseNameLabels properly reset on deinitialization
     override func prepareForReuse() {
         exerciseOneNameLabel.text = ""
         exerciseTwoNameLabel.text = ""
@@ -168,7 +162,5 @@ class ProgramOverviewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
 

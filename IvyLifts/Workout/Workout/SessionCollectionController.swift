@@ -19,9 +19,7 @@ class SessionCollectionController: UICollectionViewController {
             
             /// Once we find out how many exercises there are, let entriesCollection populate empty lists in order to
             /// match the number of cells created and have them map to some empty list corresponding w/ the cell's index.item
-            for _ in exercises {
-                self.entriesCollection.append(contentsOf: [[]])
-            }
+            self.entriesCollection = [FitnessEntry](repeating: FitnessEntry(entries: []), count: exercises.count)
         }
     }
     
@@ -30,27 +28,23 @@ class SessionCollectionController: UICollectionViewController {
     /// recorded those set entries. That way, there is no need to re-make those list of Entries again, it is automatically populated.
     /// The cells of WorkoutCollectionController use this collection to populate their own collectionViews, which list the sets that
     /// have been recorded but on the cell.
-    var entriesCollection: [[Entry]] = [] {
+    var entriesCollection: [FitnessEntry] = [] {
         didSet {
-            log.debug("Setting entries")
-            log.debug(entriesCollection)
             self.collectionView.reloadData()
         }
     }
     
-    // MARK: - View lifecycle methods 
+    // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
     }
     
-    
     /// Make TabBar disappear once this view is pushed
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        log.warning(entriesCollection)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,10 +60,12 @@ class SessionCollectionController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! SessionCollectionCell
         cell.model = exercises[indexPath.item]
-        
         /// Pass the entries collected from ExerciseEntryController to the cells in this collectionView, which then
         /// populate their own collectionView with the entries recorded
-        cell.entries = entriesCollection[indexPath.item]
+        cell.entries = entriesCollection[indexPath.item].entries
+        if entriesCollection[indexPath.item].isFinished {
+            cell.isFinished = true
+        }
         return cell
     }
     
@@ -81,8 +77,7 @@ class SessionCollectionController: UICollectionViewController {
         exerciseEntryController.exercise = exercises[indexPath.item]
         exerciseEntryController.index = indexPath.item
         exerciseEntryController.delegate = self
-        
-        exerciseEntryController.setEntries = entriesCollection[indexPath.item]
+        exerciseEntryController.setEntries = entriesCollection[indexPath.item].entries
         
         self.navigationController?.pushViewController(exerciseEntryController, animated: true)
     }
@@ -111,6 +106,10 @@ extension SessionCollectionController: ExerciseEntryDelegate {
     func passRecordedEntries(entries: [Entry], for index: Int) {
         log.debug("Entries collected from index \(index)")
         log.debug(entries)
-        self.entriesCollection[index] = entries
+        self.entriesCollection[index] = FitnessEntry(entries: entries)
+        if entries.count == exercises[index].numSets {
+            log.info("Set finished!")
+            self.collectionView.reloadData()
+        }
     }
 }

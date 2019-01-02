@@ -30,3 +30,14 @@ struct Entry {
         self.entryDate = entryDate
     }
 }
+
+struct FitnessEntry {
+    let entries: [Entry]
+    var isFinished: Bool {
+        if entries.count >= 4 {
+            return true
+        } else {
+            return false
+        }
+    }
+}

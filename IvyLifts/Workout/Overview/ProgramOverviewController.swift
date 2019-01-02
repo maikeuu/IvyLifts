@@ -15,6 +15,7 @@ class ProgramOverviewController: UICollectionViewController {
     var ivyBrain: IvyBrain! {
         didSet {
             self.isOddWeek = true
+            self.navigationItem.title = "Odd Week"
             log.error("Setting")
         }
     }
@@ -39,6 +40,32 @@ class ProgramOverviewController: UICollectionViewController {
         }
     }
     
+    var programIsStarted: Bool = false {
+        didSet {
+            if programIsStarted {
+                print("Starting program")
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    let startWeekButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Start week", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .white
+        button.addTarget(self, action: #selector(handleStartWeek), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleStartWeek() {
+        self.programIsStarted = true
+        self.collectionView.reloadData()
+    }
+    
     let switchWeekButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Switch week", for: .normal)
@@ -59,19 +86,27 @@ class ProgramOverviewController: UICollectionViewController {
         }
     }
     
+    /// For startWeekButton and switchWeekButton
+    var buttonsStackView: UIStackView!
+    func setupButtonsStackView() {
+        self.buttonsStackView = UIStackView(arrangedSubviews: [startWeekButton, switchWeekButton])
+        self.buttonsStackView.axis = .vertical
+        self.buttonsStackView.distribution = .fillEqually
+        self.buttonsStackView.spacing = 8
+        view.addSubview(buttonsStackView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Odd Week"
-        
         view.backgroundColor = UIColor.background()
+//        self.collectionView.backgroundColor = UIColor(white: 1.0, alpha: 0.75)
         setupCollectionView()
-        view.addSubview(switchWeekButton)
-        
-        self.collectionView.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, bottom: switchWeekButton.topAnchor, bottomPadding: 8)
+        setupButtonsStackView()
+        self.collectionView.pinVerticalSides(top: view.layoutMarginsGuide.topAnchor, bottom: buttonsStackView.topAnchor, bottomPadding: 8)
         self.collectionView.pinHorizontalSides(left: view.leftAnchor, right: view.rightAnchor)
-        switchWeekButton.pinVerticalSides(top: collectionView.bottomAnchor, topPadding: 8, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: 8)
-        switchWeekButton.placeCenterHorizontallyInContainer(self.view)
-        switchWeekButton.setWidth(constant: 160)
+        self.buttonsStackView.pinVerticalSides(top: collectionView.bottomAnchor, topPadding: 8, bottom: view.layoutMarginsGuide.bottomAnchor, bottomPadding: 8)
+        self.buttonsStackView.placeCenterHorizontallyInContainer(self.view)
+        self.buttonsStackView.setWidth(constant: 160)
     }
     
     func setupCollectionView() {
@@ -79,48 +114,37 @@ class ProgramOverviewController: UICollectionViewController {
         self.collectionView.backgroundColor = UIColor.background()
     }
     
-    /// On click, push to the WorkoutCollectionViewController
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        
-//        /// Make the cell have a highlight animation on click
-//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-//            cell?.backgroundColor = UIColor.init(white: 255/255, alpha: 0.7)
-//        }, completion: { _ in
-//          cell?.backgroundColor = UIColor.white
-//        })
-        
-        let flow = UICollectionViewFlowLayout()
-        let workoutController = SessionCollectionController(collectionViewLayout: flow)
-        workoutController.exercises = workouts[indexPath.item].fitnessGoals
-        
-        self.navigationController?.pushViewController(workoutController, animated: true)
-        
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ProgramOverviewCell
+        cell.model = workouts[indexPath.item]
+        if programIsStarted {
+            cell.opacity = 1.0
+        } else {
+            cell.opacity = 0.75
+        }
+        return cell
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return workouts.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ProgramOverviewCell
-        cell.model = workouts[indexPath.item]
+    /// On click, push to the WorkoutCollectionViewController
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
         
-        // Temporary workaround to labeling the days
-        if isOddWeek {
-            switch indexPath.item {
-            case 0, 2: cell.titleLabel.text = "Day A"
-            default: cell.titleLabel.text = "Day B"
-            }
-        } else {
-            switch indexPath.item {
-            case 0, 2: cell.titleLabel.text = "Day B"
-            default: cell.titleLabel.text = "Day A"
-            }
-        }
+        /// Make the cell have a highlight animation on click
+//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+//            cell?.backgroundColor = UIColor.init(white: 255/255, alpha: 0.7)
+//        }, completion: { _ in
+//          cell?.backgroundColor = UIColor.white
+//        })
+//
+        let flow = UICollectionViewFlowLayout()
+        let workoutController = SessionCollectionController(collectionViewLayout: flow)
+        workoutController.exercises = workouts[indexPath.item].fitnessGoals
         
-        return cell
+        self.navigationController?.pushViewController(workoutController, animated: true)
     }
 }
 

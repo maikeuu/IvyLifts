@@ -29,17 +29,29 @@
 		A826D32421CF8A6D00B3EA5D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32321CF8A6D00B3EA5D /* TokenManager.swift */; };
 		A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32521CF8AA900B3EA5D /* IvyAuth.swift */; };
 		A826D32821D0460A00B3EA5D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32721D0460A00B3EA5D /* Constraints.swift */; };
-		A826D33021D0633400B3EA5D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32F21D0633400B3EA5D /* Entry.swift */; };
+		A826D33021D0633400B3EA5D /* Entry+FitnessEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D32F21D0633400B3EA5D /* Entry+FitnessEntry.swift */; };
 		A826D33221D17FBF00B3EA5D /* ProgramOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33121D17FBF00B3EA5D /* ProgramOverviewController.swift */; };
 		A826D33521D1811900B3EA5D /* ProgramOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33421D1811900B3EA5D /* ProgramOverviewCell.swift */; };
 		A826D33821D1828D00B3EA5D /* SessionCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33721D1828D00B3EA5D /* SessionCollectionController.swift */; };
 		A826D33B21D18D3B00B3EA5D /* SessionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D33A21D18D3B00B3EA5D /* SessionCollectionCell.swift */; };
 		A826D34221D1B60F00B3EA5D /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */; };
 		A826D34521D1BB1600B3EA5D /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826D34421D1BB1600B3EA5D /* EntryController.swift */; };
+		A83261DA21DC438A003AEC9E /* IvyBrainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83261D921DC438A003AEC9E /* IvyBrainTests.swift */; };
+		A83261E221DC5E14003AEC9E /* RoutinesCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83261E121DC5E14003AEC9E /* RoutinesCollectionController.swift */; };
 		A868DA0821D1CC2700176E63 /* EntryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868DA0721D1CC2700176E63 /* EntryHeaderView.swift */; };
 		A868DA0A21D1CC4900176E63 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868DA0921D1CC4900176E63 /* EntryCell.swift */; };
 		A8E1B6CC21D897970025D7DA /* DataGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1B6CB21D897970025D7DA /* DataGenerators.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A83261DC21DC438A003AEC9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A826D2FD21CE237E00B3EA5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A826D30421CE237E00B3EA5D;
+			remoteInfo = IvyLifts;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1C247DC73036A9972CE52E34 /* Pods-IvyLifts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IvyLifts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IvyLifts/Pods-IvyLifts.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,13 +79,17 @@
 		A826D32321CF8A6D00B3EA5D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		A826D32521CF8AA900B3EA5D /* IvyAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyAuth.swift; sourceTree = "<group>"; };
 		A826D32721D0460A00B3EA5D /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
-		A826D32F21D0633400B3EA5D /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		A826D32F21D0633400B3EA5D /* Entry+FitnessEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+FitnessEntry.swift"; sourceTree = "<group>"; };
 		A826D33121D17FBF00B3EA5D /* ProgramOverviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramOverviewController.swift; sourceTree = "<group>"; };
 		A826D33421D1811900B3EA5D /* ProgramOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOverviewCell.swift; sourceTree = "<group>"; };
 		A826D33721D1828D00B3EA5D /* SessionCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionController.swift; sourceTree = "<group>"; };
 		A826D33A21D18D3B00B3EA5D /* SessionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionCell.swift; sourceTree = "<group>"; };
 		A826D34121D1B60F00B3EA5D /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		A826D34421D1BB1600B3EA5D /* EntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		A83261D721DC438A003AEC9E /* IvyBrainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IvyBrainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A83261D921DC438A003AEC9E /* IvyBrainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IvyBrainTests.swift; sourceTree = "<group>"; };
+		A83261DB21DC438A003AEC9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A83261E121DC5E14003AEC9E /* RoutinesCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesCollectionController.swift; sourceTree = "<group>"; };
 		A868DA0721D1CC2700176E63 /* EntryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHeaderView.swift; sourceTree = "<group>"; };
 		A868DA0921D1CC4900176E63 /* EntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		A8E1B6CB21D897970025D7DA /* DataGenerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGenerators.swift; sourceTree = "<group>"; };
@@ -87,6 +103,13 @@
 			files = (
 				8417945B948FF72715021A21 /* Pods_IvyLifts.framework in Frameworks */,
 				A826D34221D1B60F00B3EA5D /* SwiftyBeaver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A83261D421DC438A003AEC9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				A8123FC421D8D783009D6A68 /* PersonalRecords.swift */,
-				A826D32F21D0633400B3EA5D /* Entry.swift */,
+				A826D32F21D0633400B3EA5D /* Entry+FitnessEntry.swift */,
 				A8123FC021D8D748009D6A68 /* FitnessGoal+Goal.swift */,
 				A8123FC221D8D758009D6A68 /* Session.swift */,
 				A8123FBE21D8D734009D6A68 /* Program.swift */,
@@ -128,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				A826D30721CE237E00B3EA5D /* IvyLifts */,
+				A83261D821DC438A003AEC9E /* IvyBrainTests */,
 				A826D30621CE237E00B3EA5D /* Products */,
 				4EF0211E3720ABFC5B603E2C /* Pods */,
 				8E5B5ED1259557EC8AEE5B59 /* Frameworks */,
@@ -138,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				A826D30521CE237E00B3EA5D /* IvyLifts.app */,
+				A83261D721DC438A003AEC9E /* IvyBrainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,9 +174,10 @@
 				A826D32221CF8A3800B3EA5D /* IvyAPI */,
 				A826D31E21CE2E9B00B3EA5D /* MainTabBarController.swift */,
 				A8123FCF21D97765009D6A68 /* OneRepCalculator.swift */,
+				A83261E121DC5E14003AEC9E /* RoutinesCollectionController.swift */,
 				A8123FC621D8E02C009D6A68 /* CalibrationScreen.swift */,
-				A8123FCD21D97250009D6A68 /* SettingsController.swift */,
 				A8123FCB21D96F4F009D6A68 /* IvyBrain.swift */,
+				A83261D221DC3FD6003AEC9E /* Settings */,
 				A826D32A21D04AD100B3EA5D /* Authentication */,
 				A826D33321D1810600B3EA5D /* Workout */,
 				A8123FBD21D8D716009D6A68 /* Models */,
@@ -198,6 +224,7 @@
 			children = (
 				A826D33621D1827400B3EA5D /* Overview */,
 				A826D33921D185E500B3EA5D /* Workout */,
+				A868DA0621D1CC0A00176E63 /* ExerciseEntry */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -205,8 +232,8 @@
 		A826D33621D1827400B3EA5D /* Overview */ = {
 			isa = PBXGroup;
 			children = (
-				A826D33121D17FBF00B3EA5D /* ProgramOverviewController.swift */,
 				A826D33421D1811900B3EA5D /* ProgramOverviewCell.swift */,
+				A826D33121D17FBF00B3EA5D /* ProgramOverviewController.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -216,9 +243,25 @@
 			children = (
 				A826D33721D1828D00B3EA5D /* SessionCollectionController.swift */,
 				A826D33A21D18D3B00B3EA5D /* SessionCollectionCell.swift */,
-				A868DA0621D1CC0A00176E63 /* ExerciseEntry */,
 			);
 			path = Workout;
+			sourceTree = "<group>";
+		};
+		A83261D221DC3FD6003AEC9E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A8123FCD21D97250009D6A68 /* SettingsController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A83261D821DC438A003AEC9E /* IvyBrainTests */ = {
+			isa = PBXGroup;
+			children = (
+				A83261D921DC438A003AEC9E /* IvyBrainTests.swift */,
+				A83261DB21DC438A003AEC9E /* Info.plist */,
+			);
+			path = IvyBrainTests;
 			sourceTree = "<group>";
 		};
 		A868DA0621D1CC0A00176E63 /* ExerciseEntry */ = {
@@ -254,6 +297,24 @@
 			productReference = A826D30521CE237E00B3EA5D /* IvyLifts.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A83261D621DC438A003AEC9E /* IvyBrainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A83261DE21DC438A003AEC9E /* Build configuration list for PBXNativeTarget "IvyBrainTests" */;
+			buildPhases = (
+				A83261D321DC438A003AEC9E /* Sources */,
+				A83261D421DC438A003AEC9E /* Frameworks */,
+				A83261D521DC438A003AEC9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A83261DD21DC438A003AEC9E /* PBXTargetDependency */,
+			);
+			name = IvyBrainTests;
+			productName = IvyBrainTests;
+			productReference = A83261D721DC438A003AEC9E /* IvyBrainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -266,6 +327,10 @@
 				TargetAttributes = {
 					A826D30421CE237E00B3EA5D = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					A83261D621DC438A003AEC9E = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = A826D30421CE237E00B3EA5D;
 					};
 				};
 			};
@@ -283,6 +348,7 @@
 			projectRoot = "";
 			targets = (
 				A826D30421CE237E00B3EA5D /* IvyLifts */,
+				A83261D621DC438A003AEC9E /* IvyBrainTests */,
 			);
 		};
 /* End PBXProject section */
@@ -295,6 +361,13 @@
 				A826D31321CE237F00B3EA5D /* LaunchScreen.storyboard in Resources */,
 				A826D31021CE237F00B3EA5D /* Assets.xcassets in Resources */,
 				A826D30E21CE237E00B3EA5D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A83261D521DC438A003AEC9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +460,7 @@
 				A8E1B6CC21D897970025D7DA /* DataGenerators.swift in Sources */,
 				A8123FC721D8E02C009D6A68 /* CalibrationScreen.swift in Sources */,
 				A8123FCC21D96F4F009D6A68 /* IvyBrain.swift in Sources */,
-				A826D33021D0633400B3EA5D /* Entry.swift in Sources */,
+				A826D33021D0633400B3EA5D /* Entry+FitnessEntry.swift in Sources */,
 				A8123FCA21D967FA009D6A68 /* IvyLiftsProgram.swift in Sources */,
 				A826D32621CF8AA900B3EA5D /* IvyAuth.swift in Sources */,
 				A8123FC521D8D783009D6A68 /* PersonalRecords.swift in Sources */,
@@ -395,6 +468,7 @@
 				A8123FC321D8D758009D6A68 /* Session.swift in Sources */,
 				A826D33221D17FBF00B3EA5D /* ProgramOverviewController.swift in Sources */,
 				A8123FD021D97765009D6A68 /* OneRepCalculator.swift in Sources */,
+				A83261E221DC5E14003AEC9E /* RoutinesCollectionController.swift in Sources */,
 				A826D31B21CE285300B3EA5D /* UIColor.swift in Sources */,
 				A826D31F21CE2E9B00B3EA5D /* MainTabBarController.swift in Sources */,
 				A826D31D21CE2E1800B3EA5D /* SignUpViewController.swift in Sources */,
@@ -407,7 +481,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A83261D321DC438A003AEC9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A83261DA21DC438A003AEC9E /* IvyBrainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A83261DD21DC438A003AEC9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A826D30421CE237E00B3EA5D /* IvyLifts */;
+			targetProxy = A83261DC21DC438A003AEC9E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A826D30C21CE237E00B3EA5D /* Main.storyboard */ = {
@@ -596,6 +686,46 @@
 			};
 			name = Release;
 		};
+		A83261DF21DC438A003AEC9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8W5LLV26X4;
+				INFOPLIST_FILE = IvyBrainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mlin.IvyBrainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IvyLifts.app/IvyLifts";
+			};
+			name = Debug;
+		};
+		A83261E021DC438A003AEC9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8W5LLV26X4;
+				INFOPLIST_FILE = IvyBrainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mlin.IvyBrainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IvyLifts.app/IvyLifts";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -613,6 +743,15 @@
 			buildConfigurations = (
 				A826D31821CE237F00B3EA5D /* Debug */,
 				A826D31921CE237F00B3EA5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A83261DE21DC438A003AEC9E /* Build configuration list for PBXNativeTarget "IvyBrainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A83261DF21DC438A003AEC9E /* Debug */,
+				A83261E021DC438A003AEC9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
